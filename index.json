@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "latest": "2026-11-25",
+  "updated": "2026-11-25T18:22:26+08:00",
+  "pageSize": 10,
+  "issues": [
+    {
+      "date": "2026-11-25",
+      "title": "不会编程，先做出一个「今晚吃啥」小工具",
+      "version": "20261125-revision-1",
+      "updated": "2026-11-25T18:22:26+08:00",
+      "file": "issues/2026-11-25.json",
+      "stories": [
+        {
+          "id": "SIG-20261125-001",
+          "title": "不会编程，先做出一个「今晚吃啥」小工具",
+          "category": "Agent 与玩法",
+          "evidence": "作者自述",
+          "urls": [
+            "https://sspai.com/post/119208"
+          ]
+        },
+        {
+          "id": "SIG-20261125-002",
+          "title": "看外语视频，没听清的那句再划开练",
+          "category": "应用与竞品",
+          "evidence": "开发者介绍",
+          "urls": [
+            "https://sspai.com/post/119261"
+          ]
+        },
+        {
+          "id": "SIG-20261125-003",
+          "title": "对着助手说话时，背景音乐可以自动调低",
+          "category": "应用与竞品",
+          "evidence": "开发者自荐",
+          "urls": [
+            "https://sspai.com/post/119042"
+          ]
+        },
+        {
+          "id": "SIG-20261125-004",
+          "title": "把报错截图贴给助手，少打字描述",
+          "category": "Agent 与玩法",
+          "evidence": "使用者介绍",
+          "urls": [
+            "https://sspai.com/post/119379"
+          ]
+        },
+        {
+          "id": "SIG-20261125-005",
+          "title": "录完口播，先去停顿，再按字幕删错字",
+          "category": "应用与竞品",
+          "evidence": "作者／开发者自述",
+          "urls": [
+            "https://sspai.com/post/119315"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "title": "让助手替你排越洋认证电话，碰到加急费先问你再决定",
+      "version": "20261124-formal-archive-1",
+      "updated": "2026-11-25T18:22:26+08:00",
+      "file": "issues/2026-11-24.json",
+      "stories": [
+        {
+          "id": "SIG-20261124-001",
+          "title": "让助手替你排越洋认证电话，碰到加急费先问你再决定",
+          "category": "项目交付",
+          "evidence": "作者自述",
+          "urls": [
+            "https://x.com/eazymoney888/status/2121987666254451141"
+          ]
+        },
+        {
+          "id": "SIG-20261124-002",
+          "title": "走路时点一下录音，先存进网盘，再由助手定时改错并写入笔记",
+          "category": "Agent 与玩法",
+          "evidence": "作者自述",
+          "urls": [
+            "https://x.com/Luoxiaomac/status/2123748919197008357"
+          ]
+        },
+        {
+          "id": "SIG-20261124-003",
+          "title": "用 AI 补高成本实拍和抽象动画，把两年前烂尾的片子剪完；但不把「一键成片」当专业后期的替代",
+          "category": "Agent 与玩法",
+          "evidence": "视频标题／简介自述（未观看）",
+          "urls": [
+            "https://www.bilibili.com/video/BV1WNsp6vEJT/"
+          ]
+        },
+        {
+          "id": "SIG-20261124-004",
+          "title": "简介称用 Claude Fable 5.2 做了一款极寒末世囤货小游戏：先决定买煤还是买打火机",
+          "category": "Agent 与玩法",
+          "evidence": "视频标题／简介自述（未观看）",
+          "urls": [
+            "https://www.bilibili.com/video/BV1yJWi6BE2V/"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
+      "title": "先放宽配不上的品名规则再对账；邮件只起草、不发送",
+      "version": "20261123-formal-archive-1",
+      "updated": "2026-11-25T18:22:26+08:00",
+      "file": "issues/2026-11-23.json",
+      "stories": [
+        {
+          "id": "SIG-20261123-001",
+          "title": "先放宽配不上的品名规则再对账；邮件只起草、不发送",
+          "category": "项目交付",
+          "evidence": "作者自述",
+          "urls": [
+            "https://alextang.dev/zh/buildlog/2026-11-18-buildlog"
+          ]
+        },
+        {
+          "id": "SIG-20261123-002",
+          "title": "关掉 122 笔已付款未发货的旧订单：先备份，用完整编号匹配，对不上就先卡住",
+          "category": "项目交付",
+          "evidence": "作者自述",
+          "urls": [
+            "https://x.com/rhanley/status/2124148775962734769"
+          ]
+        },
+        {
+          "id": "SIG-20261123-003",
+          "title": "手术改期后，用助手按客人常来的时间，经 WhatsApp 给近 70 人改美甲预约",
+          "category": "Agent 与玩法",
+          "evidence": "亲属自述",
+          "urls": [
+            "https://x.com/ShuiCohen/status/2122744219592786291"
+          ]
+        },
+        {
+          "id": "SIG-20261123-004",
+          "title": "把图片、截图或单页 PDF 转成可编辑的 PPT；作者提醒复杂表格往往要重画",
+          "category": "应用与竞品",
+          "evidence": "作者自述",
+          "urls": [
+            "https://www.v2ex.com/t/1258935"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "title": "用 Grok Bot 做一段带音乐的感谢幻灯片视频——说清给谁、讲什么，它做出来，你指出错字它再改",
+      "version": "20261122-formal-archive-1",
+      "updated": "2026-11-25T18:22:26+08:00",
+      "file": "issues/2026-11-22.json",
+      "stories": [
+        {
+          "id": "SIG-20261122-001",
+          "title": "用 Grok Bot 做一段带音乐的感谢幻灯片视频——说清给谁、讲什么，它做出来，你指出错字它再改",
+          "category": "Agent 与玩法",
+          "evidence": "作者自述",
+          "urls": [
+            "https://x.com/CPAwithGrokBot/status/2123933400981557759"
+          ]
+        },
+        {
+          "id": "SIG-20261122-002",
+          "title": "Grok Bot 替你打电话预约——排队、和客服通话、先说明自己是 AI，产生费用前先问你",
+          "category": "Agent 与玩法",
+          "evidence": "官方说明 + 用户自述",
+          "urls": [
+            "https://x.com/grok/status/2121981683385663584",
+            "https://x.com/justinfredette/status/2123579844797530399"
+          ]
+        },
+        {
+          "id": "SIG-20261122-003",
+          "title": "拼拼账单——邻居拼单时让大家自己认领份数，自动分摊运费、算清各人应付，到货再通知",
+          "category": "应用与竞品",
+          "evidence": "作者自述（利益相关）",
+          "urls": [
+            "https://sspai.com/post/119010"
+          ]
+        },
+        {
+          "id": "SIG-20261122-004",
+          "title": "Musset——写小说时让 AI 只做批注、不替你写，保住自己的文字",
+          "category": "应用与竞品",
+          "evidence": "作者自述",
+          "urls": [
+            "https://news.ycombinator.com/item?id=50586323"
+          ]
+        },
+        {
+          "id": "SIG-20261122-005",
+          "title": "把桌面像素时钟改成“AI 工作灯”——同时开几个 AI 助手时，抬头看灯就知道谁在跑、谁做完、谁出错",
+          "category": "Agent 与玩法",
+          "evidence": "作者自述",
+          "urls": [
+            "https://sspai.com/post/118939"
+          ]
+        }
+      ]
+    }
+  ]
+}

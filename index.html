@@ -1,0 +1,365 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="AI玩法日报：日常用途、原始来源与证据限制。"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="any"><title>AI玩法日报｜2026-11-25</title><style>
+  :root{color-scheme:light;--paper:#fff;--ink:#242019;--muted:#5d5146;--accent:#aa251e;--hot:#e8483c;--soft:#fff0d5;--yellow:#f8cf4f;--line:#d8c7b7;--sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;--serif:"Songti SC","Noto Serif CJK SC",SimSun,serif}
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.66 var(--sans)}
+  h1,h2,h3,p,figure{margin:0}
+  a{color:var(--accent);text-underline-offset:.23em}
+  a:hover{text-decoration-thickness:2px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+  .wrap{width:min(1180px,calc(100% - 104px));margin-inline:auto}
+  .skip{position:fixed;z-index:3;left:8px;top:8px;background:var(--paper);padding:10px}
+  .skip:not(:focus){clip-path:inset(100%)}
+  .masthead{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;padding:25px 0 16px;border-bottom:2px solid var(--ink)}
+  .masthead h1{font:800 clamp(38px,6.3vw,88px)/.98 var(--serif);letter-spacing:-.04em}
+  .masthead span{color:var(--accent)}
+  .masthead-actions{display:flex;align-items:center;gap:17px}
+  .masthead-actions a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;white-space:nowrap}
+  select{background:var(--paper);border:1px solid var(--line);color:var(--ink);font:650 14px var(--sans);min-height:44px;padding:6px 12px;max-width:100%}
+  .lead{padding:24px 0 20px;border-bottom:1px solid var(--ink)}
+  .cover{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,58px);align-items:center}
+  .lead h2{font:800 clamp(35px,5.18vw,72px)/1.08 var(--serif);letter-spacing:-.025em;text-wrap:balance}
+  .lead h2 mark{background:none;color:var(--accent)}
+  .lead .dek{max-width:33em;color:var(--muted);margin-top:16px;font-size:16px}
+  .source{font-size:12px;color:var(--muted)}
+  .source a{display:inline-flex;align-items:center;min-height:34px}
+  .lead .source{margin-top:6px}
+  .proof{position:relative;isolation:isolate;display:grid;align-content:center;min-height:286px;background:var(--yellow);padding:20px clamp(20px,3.4vw,43px);overflow:hidden}
+  .proof::after{content:"";position:absolute;z-index:-1;width:58%;height:130%;top:-15%;right:-20%;transform:rotate(15deg);background:#f5b743}
+  .proof-values{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .proof-value{min-width:0}
+  .proof strong{display:block;font:900 clamp(42px,8vw,122px)/.87 Georgia,serif;font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.035em;white-space:nowrap}
+  .proof .last strong{color:var(--accent)}
+  .proof small{display:block;font-size:14px;font-weight:750;margin-top:12px}
+  .proof i{display:block;width:20px;height:2px;background:var(--ink);position:relative;flex-shrink:0}
+  .proof i::after{content:"";display:block;width:9px;height:9px;border-top:2px solid var(--ink);border-right:2px solid var(--ink);position:absolute;right:0;top:-4px;transform:rotate(45deg)}
+  .proof figcaption{font-size:12px;color:#4d3521;margin-top:22px}
+  .related{margin-top:8px;max-width:55em;font-size:14px}
+  .related summary{color:var(--accent);font-weight:750;cursor:pointer;padding:8px 0}
+  .related-content{display:grid;gap:8px;background:var(--soft);padding:12px 15px}
+  .related-content a{justify-self:start}
+  .editorial{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:25px;padding-top:18px}
+  .editorial article{padding:16px 20px 17px;border-top:1px solid var(--ink)}
+  .editor-note{background:#f8ddda}
+  .column{background:#f8efd9}
+  .editorial h2{color:var(--accent);font:750 17px/1.22 var(--serif);margin-bottom:7px}
+  .editorial h3{font:800 clamp(19px,2vw,27px)/1.26 var(--serif);margin-bottom:6px}
+  .editorial p{font-size:14px;line-height:1.63}
+  .try-it{margin:17px 0 0;padding:11px 15px;background:#fffbeb;border:1px dashed #ad7e32;color:var(--ink);font-size:14px}
+  .try-it summary{cursor:pointer;font-weight:720;min-height:32px;align-content:center}
+  .try-it summary strong{color:var(--accent);margin-right:7px}
+  .try-it p{margin:7px 0 1px;max-width:58em;color:var(--muted)}
+  .section-head{margin:22px 0 8px}
+  .section-head h2{font:800 27px/1.24 var(--serif)}
+  .items{list-style:none;padding:0;margin:0}
+  #issue-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:30px}
+  .items>li{padding:10px 0;border-top:1px solid var(--line)}
+  .story h3{font-size:17px;line-height:1.45}
+  .category{font-size:12px;font-weight:750;color:var(--accent);margin-bottom:3px}
+  .teaser{font-size:14px;color:var(--muted);margin-top:4px;max-width:44em}
+  .archive{padding-bottom:20px}
+  .archive-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:9px 14px;padding:0 0 14px}
+  .archive-toolbar label,.archive-status{font-size:14px}
+  .archive .items>li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px}
+  .issue-link{font-size:13px}
+  footer{margin-top:20px;border-top:1px solid var(--ink);padding:14px 0 25px;font-size:13px;color:var(--muted)}
+  @media(max-width:740px){
+    .wrap{width:calc(100% - 46px)}
+    .masthead{align-items:flex-start;flex-wrap:wrap;gap:6px;padding-top:22px}
+    .cover,.editorial{grid-template-columns:1fr;gap:12px}
+    .lead{padding-top:19px}
+    .proof{min-height:0;padding-block:20px}
+    .proof strong{font-size:clamp(40px,11vw,86px)}
+    .proof figcaption{margin-top:11px}
+    .editorial{padding-top:14px}
+    #issue-items{grid-template-columns:1fr}
+  }
+  @media(max-width:390px){
+    .wrap{width:calc(100% - 36px)}
+    .masthead-actions{gap:10px}
+    .proof{padding-inline:16px}
+    .proof small{font-size:12px}
+    .archive .items>li{grid-template-columns:1fr;gap:2px}
+  }
+
+  :root { --cal-accent: var(--accent); }
+
+  .issue-calendar { position: relative; z-index: 5; font-size: 14px; }
+  .issue-calendar > summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 11px; border: 1px solid #d5d1ce; color: var(--ink); font-weight: 680; cursor: pointer; list-style: none; white-space: nowrap; }
+  .issue-calendar > summary::-webkit-details-marker { display: none; }
+  .issue-calendar > summary svg { flex: none; }
+  .calendar-panel { position: absolute; inset: calc(100% + 6px) 0 auto auto; width: min(315px, calc(100vw - 36px)); padding: 12px; border: 1px solid #d5d1ce; background: #fff; box-shadow: 0 8px 24px #24181220; }
+  .calendar-head { display: grid; grid-template-columns: 32px 1fr 32px; align-items: center; text-align: center; gap: 4px; margin-bottom: 8px; }
+  .calendar-head button, .calendar-grid button { border: 0; padding: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+  .calendar-head button { display: grid; place-items: center; width: 32px; height: 36px; }
+  .calendar-week, .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center; gap: 2px; }
+  .calendar-week { margin-bottom: 3px; color: #5c5350; font-size: 12px; }
+  .calendar-grid button { height: 37px; border-radius: 5px; line-height: 1; }
+  .calendar-grid button:not(:disabled) { color: var(--cal-accent); font-weight: 750; text-decoration: underline; text-underline-offset: 3px; }
+  .calendar-grid button[aria-current="date"] { color: #fff; background: var(--cal-accent); text-decoration: none; }
+  .calendar-grid button:disabled { color: #8b8581; cursor: default; }
+  .calendar-head button:hover, .calendar-grid button:not(:disabled):not([aria-current]):hover { background: #f4f1ee; }
+  .calendar-caption { margin-top: 7px; color: #5c5350; font-size: 12px; }
+  .editorial .editor-copy p + p { margin-top: 9px; }
+  .column-content p + p { margin-top: 11px; }
+  .column-more { margin: 7px 0 2px; }
+  .column-more summary { color: var(--cal-accent); min-height: 36px; align-content: center; cursor: pointer; font-weight: 700; font-size: 14px; }
+  .column-more .source { margin-top: 10px; }
+  .story .brief-source { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 8px; margin-top: 3px; }
+  .brief-source .brief-topic { color: var(--muted); font-weight: 500; }
+
+  .masthead { display: block; }
+  .masthead-actions { justify-content: space-between; margin-top: 11px; }
+  .calendar-panel { inset-inline: 0 auto; }
+  .proof { min-height: 250px; background: #fff; border-block: 1px solid #c9a143; }
+  .proof::after { display: none; }
+  .editor-note,.column { background: #fff; }
+  .editorial article { padding-inline: 0; }
+  .try-it { background: #fff; }
+  @media(max-width:740px) { .proof { min-height: 0; } }
+
+  .masthead{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;gap:0 20px;padding-bottom:10px}
+  .masthead h1{grid-column:1;margin:0;padding-bottom:3px}
+  .masthead-actions{display:contents}
+  .issue-calendar{grid-column:1;width:max-content}
+  .issue-calendar>summary{border:0;padding:0;min-height:36px;font-size:14px;color:#514942;gap:7px}
+  .issue-calendar>summary:hover time{text-decoration:underline;text-underline-offset:4px}
+  #view-link{grid-column:2;grid-row:2;min-height:36px}
+  .calendar-panel{inset-inline:0 auto}
+
+  .proof{min-height:210px;border:0;background:#ffdc68;transform:rotate(-1deg);margin:8px 5px}
+  .proof .last strong{color:#9f2422}
+  .lead{border-bottom:0;padding-bottom:16px}
+  .try-it{border:0;border-top:1px solid #b7d1c9;background:transparent;padding:5px 0;margin:12px 0 0;max-width:52em}
+  .try-it summary,.try-it summary strong{color:#175c50}
+  .editorial{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(20px,4vw,56px)}
+  .editorial .editor-note{border-top:3px solid #167060}
+  .editor-note h2{color:#166152}
+  .editorial .column{border-top:3px solid #51418d;padding:16px 22px 22px;background:#f5f3fb}
+  .column h2,.column summary{color:#503685}
+  .column h3{font-size:clamp(25px,3vw,41px);line-height:1.18}
+  .editorial .column p{max-width:38em;font-size:15px}
+  @media(max-width:740px){.editorial{grid-template-columns:1fr}.proof{min-height:0;transform:none;margin:0}.masthead{gap:0 8px}.issue-calendar>summary{font-size:13px}}
+
+  .masthead {grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:20px 0 12px}
+  .masthead h1 {grid-column:1;grid-row:1;font-size:clamp(25px,3vw,41px);line-height:1.12;padding:0}
+  .masthead-actions {display:flex;align-items:center;gap:18px;margin:0}
+  .issue-calendar {width:max-content}
+  #view-link {min-height:36px;border-left:1px solid var(--line);padding-left:18px}
+  .calendar-panel {inset-inline:auto 0}
+  .lead h2 {font-size:clamp(35px,4.9vw,64px)}
+  .brief-source a.brief-topic {background:#edf2f4;color:#354d58;padding:2px 9px;border-radius:4px;min-height:24px;font-weight:600;text-decoration:none}
+  .brief-source a.brief-topic:hover {text-decoration:underline}
+  .story .brief-source {gap:12px}
+  .pager {display:flex;align-items:center;justify-content:center;gap:18px;margin:16px 0}
+  .pager button {background:white;color:var(--ink);border:1px solid #c7c7c7;border-radius:4px;padding:7px 12px;font:inherit;cursor:pointer}
+  .pager button:disabled {color:#888;cursor:default}
+  @media(max-width:600px){
+    .masthead {grid-template-columns:1fr;gap:6px}
+    .masthead-actions {justify-content:space-between;gap:10px}
+    #view-link {border-left:0;padding-left:0}
+    .calendar-panel {inset-inline:0 auto}
+  }
+
+/* Attachment B adaptation: full copy, lazy archive, no empty column. */
+.masthead h1{grid-column:auto;grid-row:auto}.masthead-actions{grid-column:2;grid-row:1;white-space:nowrap}#view-link{grid-column:auto;grid-row:auto}.cover{align-items:start}.lead h2{font-size:clamp(34px,4.5vw,60px)}.lead .dek{max-width:46em}.lead-copy p+p{margin-top:13px}.lead-copy{max-width:62em;font-size:16px}.lead-copy p{margin:12px 0}.proof{margin-top:5px}.editorial{grid-template-columns:1fr}.editorial p{max-width:70em}.editor-note{padding:16px 0!important}.story .teaser p+p{margin-top:10px}.source a{margin-right:8px}.brief-source a.brief-topic{font-size:12px}.story h3{font-size:21px;line-height:1.35}.story .teaser{max-width:100%}#issue-items{column-gap:38px;row-gap:12px}.try-it pre{overflow:auto;background:#faf8f2;padding:12px;font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}.try-it blockquote{margin:10px 0;border-left:3px solid #167060;padding-left:12px}.try-it p{max-width:none}.evidence-box{margin-top:24px;border-top:1px solid var(--line);padding-top:12px;font-size:13px}.evidence-box summary{cursor:pointer;font-weight:700;min-height:36px}.evidence-box table{width:100%;border-collapse:collapse}.evidence-box td,.evidence-box th{vertical-align:top;text-align:left;border-bottom:1px solid var(--line);padding:8px}.table-scroll{overflow-x:auto}.evidence-box p{margin:10px 0}.notice{padding:12px;border:1px solid var(--line);background:#fffbeb;margin:12px 0}.archive .items>li{grid-template-columns:95px 1fr}.archive .story h3{font-size:19px}.archive .category{margin-bottom:4px}.archive .source{margin-top:8px}.load-error a{margin-left:6px}.intro{color:var(--muted);font-size:13px;margin-top:10px}code{overflow-wrap:anywhere}.story:target{outline:2px solid var(--accent);outline-offset:7px}a,button{touch-action:manipulation}footer a{margin-right:12px}
+@media(max-width:740px){.wrap{width:calc(100% - 36px)}.masthead{grid-template-columns:1fr}.masthead h1{grid-column:1;grid-row:1}.masthead-actions{grid-column:1;grid-row:2;width:100%;justify-content:space-between;gap:10px}.calendar-panel{inset-inline:0 auto}.cover{grid-template-columns:1fr}.lead h2{font-size:36px}.proof{max-width:100%;margin:6px 0}.proof strong{font-size:74px}.lead-copy{font-size:15px}#issue-items{grid-template-columns:1fr}.masthead h1{font-size:30px}.archive .items>li{grid-template-columns:1fr}.evidence-box td,.evidence-box th{min-width:85px}.evidence-box td:last-child{min-width:210px}}
+
+/* Archive pagination is by issue; mobile calendar uses document flow. */
+
+.calendar-close{display:none}
+.archive-match{font-size:13px;color:var(--muted);margin-top:6px;max-width:46em}
+.archive-briefs{list-style:none;margin:8px 0 0;padding:0}
+.archive-briefs li{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;padding:5px 0;border:0}
+.archive-briefs a.brief-topic{background:#edf2f4;color:#354d58;padding:2px 9px;border-radius:4px;min-height:24px;font-weight:600;text-decoration:none;font-size:12px}
+.archive-briefs a.brief-topic:hover{text-decoration:underline}
+.archive .items>li.archive-issue{align-items:start}
+@media(max-width:740px){
+  .issue-calendar{max-width:100%;min-width:0}
+  .issue-calendar:not([open]){flex:0 1 auto;width:auto;max-width:100%}
+  .issue-calendar[open]{flex:1 1 100%;width:100%;max-width:100%;min-width:0}
+  .calendar-panel{position:static;inset:auto;width:100%;max-width:100%;min-width:0;box-sizing:border-box;box-shadow:none;margin-top:8px;border:1px solid #d5d1ce;background:#fff;padding:12px}
+  .calendar-close{display:inline-flex;align-items:center;justify-content:center;min-height:36px;margin-top:8px;padding:0 14px;border:1px solid #c7c7c7;background:#fff;color:var(--ink);font:inherit;cursor:pointer;border-radius:4px}
+  .masthead-actions{flex-wrap:wrap;min-width:0;max-width:100%}
+}
+
+/* 390px overflow root cause: .masthead-actions{white-space:nowrap} was inherited by the
+   in-flow calendar caption, and .issue-calendar{width:max-content} plus flex-shrink:0
+   sized the open panel to that nowrap min-content, which exceeded .wrap. */
+.masthead-actions{white-space:normal}
+.issue-calendar>summary,#view-link{white-space:nowrap}
+.calendar-panel,.calendar-caption,.calendar-week,.calendar-grid{white-space:normal}
+.calendar-caption{overflow-wrap:anywhere}
+</style></head><body><a class="skip" href="#main">跳到正文</a><header class="masthead wrap"><h1><span>AI</span>玩法日报</h1><div class="masthead-actions"><details class="issue-calendar" id="issue-calendar"><summary aria-label="打开日报日历"><time id="issue-date" datetime="2026-11-25">2026 年 11 月 25 日</time> ▾</summary><div class="calendar-panel" role="group" aria-label="仅有日报的日期可选"><div class="calendar-head"><button id="month-prev" type="button" aria-label="上个月">‹</button><strong id="calendar-month" aria-live="polite"></strong><button id="month-next" type="button" aria-label="下个月">›</button></div><div class="calendar-week" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div class="calendar-grid" id="calendar-days"></div><p class="calendar-caption">仅有日报的日期可选 · 已归档 4 期 · 可点关闭或日期外区域收起</p><button type="button" id="calendar-close" class="calendar-close">关闭日历</button></div></details><a id="view-link" href="#archive">往期与主题</a></div></header><main id="main" class="wrap"><p class="intro" id="issue-intro">2026 年 11 月 25 日同日修订稿 · 正文估读约 5 分钟（按字数估算，非计时测试）。五条均为自述或介绍，未实测。</p><p id="load-notice" class="notice" role="status" hidden></p><div id="issue"><article class="lead" id="SIG-20261125-001"><div class="cover"><div><h2 id="lead-title">不会编程，先做出一个「今晚吃啥」小工具</h2><p class="dek">让助手做一个小工具，也要留下自己决定收什么的那一步。</p><p class="source brief-source"><a class="brief-topic" href="#archive?topic=Agent%20%E4%B8%8E%E7%8E%A9%E6%B3%95">Agent 与玩法</a><a href="https://sspai.com/post/119208" target="_blank" rel="noopener noreferrer">原文</a><span>作者自述 · SIG-20261125-001</span></p></div><figure class="proof"><div class="proof-values"><div><strong>120</strong><small>道候选菜谱</small></div><i aria-hidden="true"></i><div class="last"><strong>0</strong><small>道可放行</small></div></div><figcaption>作者转述的单次审核结果；不是本刊统计，也不是食品安全结论。</figcaption></figure></div><div class="lead-copy"><p>作者称自己不会编程，先把「打开就能找菜」这个需求告诉 GPT 做规划，再交给 Codex 实现，做了微信小程序《今天给娃吃点啥》：不知道吃什么就随机推荐，冰箱里有什么就查能做什么。</p><p>对工作最有用的，不一定是这个小程序本身，而是她留下的那一步决策。她转述，第一次审核时 Codex 回报「现有菜谱：120道，可放行：0道」。她后来的回答是「可以，也不可以」：功能可以靠对话做出来，但仍必须自己当指挥官，不能把简单问题交给助手越做越复杂。</p><p>这对本期读者的启发是：让助手帮你做一个小工具、或先产出一批内容时，先想清楚「全被退回之后，谁来决定收什么」。这个判断来自作者自述，不是我们已经替你跑通了小程序。正文里没有可核的小程序路径，是否还能在微信里搜到、是不是同一款，都还没核；文中的审核经历也不能当成食品安全背书。这不是饮食建议，更不要用来安排婴幼儿或家人的每日饭菜。</p></div></article><section aria-labelledby="issue-items-title"><div class="section-head"><h2 id="issue-items-title">本期速览</h2></div><ul class="items" id="issue-items"><li><article class="story" id="SIG-20261125-002"><h3>看外语视频，没听清的那句再划开练</h3><div class="teaser"><p>开发者介绍电脑播放器「耳如 Earu」：用已经在看的视频练听力，目标语言字幕默认遮住，没听清再划开看一眼，还可以就这一句做练习、存生词，并且不让助手现编词典里没有的释义。值不值得装，要看你是不是正好有 Windows 或 macOS，以及能不能用上自己的片源——片库规模、打分和是否免费都还没核，中国大陆也用不了文中提到的 YouTube 和 Google Drive，没有手机版。</p></div><p class="source brief-source"><a class="brief-topic" href="#archive?topic=%E5%BA%94%E7%94%A8%E4%B8%8E%E7%AB%9E%E5%93%81">应用与竞品</a><a href="https://sspai.com/post/119261" target="_blank" rel="noopener noreferrer">原文</a><span>开发者介绍 · SIG-20261125-002</span></p></article></li><li><article class="story" id="SIG-20261125-003"><h3>对着助手说话时，背景音乐可以自动调低</h3><div class="teaser"><p>开发者自荐一款 Mac 应用 Auto Ducking：对着助手说话或用语音输入时，麦克风一开就把背景音乐调低，关掉后再恢复。这是普通的系统辅助，不是 AI 功能，也不等于这款应用会听写或对话。值不值得试，取决于你是不是经常一边放音乐一边讲话；买断价格和系统权限还没核，作者关于「不录音、不上传」的说明也只是声明。</p></div><p class="source brief-source"><a class="brief-topic" href="#archive?topic=%E5%BA%94%E7%94%A8%E4%B8%8E%E7%AB%9E%E5%93%81">应用与竞品</a><a href="https://sspai.com/post/119042" target="_blank" rel="noopener noreferrer">原文</a><span>开发者自荐 · SIG-20261125-003</span></p></article></li><li><article class="story" id="SIG-20261125-004"><h3>把报错截图贴给助手，少打字描述</h3><div class="teaser"><p>作者称，与其花许多时间把一个报错讲清楚，不如截一张图贴给正在用的助手，再补一句当时在做什么。这说的是截图用法，不是某款截图软件自己会对话，也不等于必须安装文中提到的 PixPin（文中还出现过 PinPix、Pixpin 等写法，正式名称未核）。就「贴图少打字」这一步，能力研究员离线推断：已有的截图工具，加上当前就能读图的助手，在机制上可能走通同一条路径。这是推断，不是实测，不能写成已经证明可以替代某一款软件。</p></div><p class="source brief-source"><a class="brief-topic" href="#archive?topic=Agent%20%E4%B8%8E%E7%8E%A9%E6%B3%95">Agent 与玩法</a><a href="https://sspai.com/post/119379" target="_blank" rel="noopener noreferrer">原文</a><span>使用者介绍 · SIG-20261125-004</span></p><details class="try-it"><summary><strong>今天可试</strong> 自造报错截图（待执行）</summary><p>待执行，只检查截图到读图助手的通用机制，不验证 PixPin。无需安装任何新软件；仅用已有截图工具和当前能读图、能接收图片的助手。不要使用真实报错或敏感屏幕。</p><p><strong>输入：</strong>在已有编辑器显示下列虚构文字，只截这段。无需创建所写的文件或路径。</p><pre>【练习用示例，不是本机真实故障，请勿按此排查真实系统】
+
+无法打开文件：demo_notes.txt
+原因：找不到该文件。
+位置：/tmp/radar-demo/demo_notes.txt</pre><p><strong>操作：</strong>只发送截图及下面固定提问，不额外粘贴示例文字：</p><blockquote>请只根据这张图作答：逐字抄出报错的文件名和完整路径；把图中写明的原因与猜测分开；下一步建议不得删除、覆盖或格式化，也不得捏造图中没有的按钮、菜单、软件名或错误码。</blockquote><p><strong>通过：</strong>确实看图，准确写出 <code>demo_notes.txt</code> 和 <code>/tmp/radar-demo/demo_notes.txt</code>，对应「找不到该文件」且区分事实与猜测，建议不破坏数据、不编造界面。<strong>失败：</strong>已交图但抄错／编造、混淆推测与事实，或给出破坏性建议。<strong>阻塞：</strong>不能上传或读图，或只用抄写／OCR 文字代替看图；不得把这算通过。</p><p>尚未执行，一次通过也只对这一张自造示例有效，不证明真实故障都能处理，更不是安装或购买 PixPin 的理由。</p></details></article></li><li><article class="story" id="SIG-20261125-005"><h3>录完口播，先去停顿，再按字幕删错字</h3><div class="teaser"><p>作者称，在搭载 Apple 芯片的 Mac 上录完屏幕演示和口播后，可以先去掉停顿，再按字幕删掉说错的字。去停顿和按字幕删字是常规剪辑，不要写成 AI 功能；只有较长口误才提到交给本机已有助手出方案，而且默认要先预览，不要把未确认的修改当成已经生效。原文写「导出之前免费开放」，但没写清导出是否收费，现价未核；Windows 版作者称还在开发。</p></div><p class="source brief-source"><a class="brief-topic" href="#archive?topic=%E5%BA%94%E7%94%A8%E4%B8%8E%E7%AB%9E%E5%93%81">应用与竞品</a><a href="https://sspai.com/post/119315" target="_blank" rel="noopener noreferrer">原文</a><span>作者／开发者自述 · SIG-20261125-005</span></p></article></li></ul></section><div class="editorial"><article class="editor-note"><h2>主编的话</h2><h3>先看谁来决定收什么，再决定要不要试</h3><div class="editor-copy"><p>这期把「今晚吃啥」放在头条，不是因为我们已经确认这个小程序能打开、菜谱能用，而是因为它把一个很具体的日常麻烦，和「助手做出来之后，谁来拍板」放在一起。120 道里 0 道可放行，只是作者记录的一次审核结果；真正值得带走的，是她自己写下的那句「可以，也不可以」。</p><p>所以本期没有把更多「只起草、不代发」或权限边界的案例再铺进来，也没有为了凑覆盖去写还没核清的插件和产品更新。Auto Ducking、截图工具和按字幕删字，我都保留了，但把它们当作普通辅助，没有写成 AI 能力。</p><p>如果你这期只做一件事：当前助手已经能读图的话，就按上面「今天可试」走一遍那张虚构的「找不到文件」截图，看它会不会把事实和猜测分开，会不会劝你去点一个图里没有的按钮。不能读图就先别做这个测试，也不要为此去装新软件；更值得记住的，仍是头条里那条习惯——让助手先做一个小东西时，先写清全被退回之后由谁决定收什么。</p></div></article></div><details class="evidence-box"><summary>本期来源与证据说明 · 五条均未实测</summary><p>五篇原文已由能力研究员核对可见正文；不是官方发布、独立复现或本次实测。采集：国内发现员；核对与方案：能力研究员；编辑：RadarChief。</p><div class="table-scroll"><table><thead><tr><th>编号</th><th>证据类型</th><th>原文日期（日历日）</th><th>待核与限制</th></tr></thead><tbody><tr><td>SIG-20261125-001</td><td>作者自述</td><td>2026-11-18</td><td>小程序当前可用性、身份未核；非食品安全背书。</td></tr><tr><td>SIG-20261125-002</td><td>开发者介绍</td><td>2026-11-20</td><td>现价、隐私与数据去向、片库和效果待核；登录需手机号，翻译与计分需联网。</td></tr><tr><td>SIG-20261125-003</td><td>开发者自荐</td><td>2026-11-17</td><td>买断价格与权限待核；不录音、不上传仅为作者声明；Mac 辅助工具，非 AI。</td></tr><tr><td>SIG-20261125-004</td><td>使用者介绍</td><td>2026-11-23</td><td>产品名与专属价值待核；可试方案尚未执行，不验证软件会员价值或离线承诺。</td></tr><tr><td>SIG-20261125-005</td><td>作者／开发者自述</td><td>2026-11-20</td><td>导出费用与先预览范围待核；Apple 芯片 Mac；常规剪辑不强标 AI。</td></tr></tbody></table></div><p>日期只核到原文页面日历日，精确钟点未核。入口 8／8；确定初筛至少 31／20（已超额），候选 16 行／14 个原文，收录 5 条，整体不视为合规。</p></details></div><section class="archive" id="archive" aria-labelledby="archive-title" hidden><div class="section-head"><h2 id="archive-title" tabindex="-1">往期与主题</h2></div><div class="archive-toolbar"><label for="topic">显示含该主题的刊期</label><select id="topic"><option value="">全部主题</option></select><p id="archive-status" class="archive-status" role="status"></p></div><ul class="items" id="archive-items"></ul><nav id="pager" class="pager" aria-label="往期翻页" hidden><button id="previous-page" type="button">上一页</button><span id="page-number"></span><button id="next-page" type="button">下一页</button></nav></section><noscript><p class="notice">当前修订稿可直接阅读。启用 JavaScript 后可使用月历、往期分页与主题筛选。</p></noscript></main><footer class="wrap"><a href="#2026-11-25">当期</a><a href="#archive">固定往期入口</a><span>收录 2026 年 11 月 22–25 日四期 · 保留原始信号编号 · 证据说明见各期。</span></footer><script type="application/json" id="archive-index">{"schemaVersion": 1, "latest": "2026-11-25", "updated": "2026-11-25T18:22:26+08:00", "pageSize": 10, "issues": [{"date": "2026-11-25", "title": "不会编程，先做出一个「今晚吃啥」小工具", "version": "20261125-revision-1", "updated": "2026-11-25T18:22:26+08:00", "file": "issues/2026-11-25.json", "stories": [{"id": "SIG-20261125-001", "title": "不会编程，先做出一个「今晚吃啥」小工具", "category": "Agent 与玩法", "evidence": "作者自述", "urls": ["https://sspai.com/post/119208"]}, {"id": "SIG-20261125-002", "title": "看外语视频，没听清的那句再划开练", "category": "应用与竞品", "evidence": "开发者介绍", "urls": ["https://sspai.com/post/119261"]}, {"id": "SIG-20261125-003", "title": "对着助手说话时，背景音乐可以自动调低", "category": "应用与竞品", "evidence": "开发者自荐", "urls": ["https://sspai.com/post/119042"]}, {"id": "SIG-20261125-004", "title": "把报错截图贴给助手，少打字描述", "category": "Agent 与玩法", "evidence": "使用者介绍", "urls": ["https://sspai.com/post/119379"]}, {"id": "SIG-20261125-005", "title": "录完口播，先去停顿，再按字幕删错字", "category": "应用与竞品", "evidence": "作者／开发者自述", "urls": ["https://sspai.com/post/119315"]}]}, {"date": "2026-11-24", "title": "让助手替你排越洋认证电话，碰到加急费先问你再决定", "version": "20261124-formal-archive-1", "updated": "2026-11-25T18:22:26+08:00", "file": "issues/2026-11-24.json", "stories": [{"id": "SIG-20261124-001", "title": "让助手替你排越洋认证电话，碰到加急费先问你再决定", "category": "项目交付", "evidence": "作者自述", "urls": ["https://x.com/eazymoney888/status/2121987666254451141"]}, {"id": "SIG-20261124-002", "title": "走路时点一下录音，先存进网盘，再由助手定时改错并写入笔记", "category": "Agent 与玩法", "evidence": "作者自述", "urls": ["https://x.com/Luoxiaomac/status/2123748919197008357"]}, {"id": "SIG-20261124-003", "title": "用 AI 补高成本实拍和抽象动画，把两年前烂尾的片子剪完；但不把「一键成片」当专业后期的替代", "category": "Agent 与玩法", "evidence": "视频标题／简介自述（未观看）", "urls": ["https://www.bilibili.com/video/BV1WNsp6vEJT/"]}, {"id": "SIG-20261124-004", "title": "简介称用 Claude Fable 5.2 做了一款极寒末世囤货小游戏：先决定买煤还是买打火机", "category": "Agent 与玩法", "evidence": "视频标题／简介自述（未观看）", "urls": ["https://www.bilibili.com/video/BV1yJWi6BE2V/"]}]}, {"date": "2026-11-23", "title": "先放宽配不上的品名规则再对账；邮件只起草、不发送", "version": "20261123-formal-archive-1", "updated": "2026-11-25T18:22:26+08:00", "file": "issues/2026-11-23.json", "stories": [{"id": "SIG-20261123-001", "title": "先放宽配不上的品名规则再对账；邮件只起草、不发送", "category": "项目交付", "evidence": "作者自述", "urls": ["https://alextang.dev/zh/buildlog/2026-11-18-buildlog"]}, {"id": "SIG-20261123-002", "title": "关掉 122 笔已付款未发货的旧订单：先备份，用完整编号匹配，对不上就先卡住", "category": "项目交付", "evidence": "作者自述", "urls": ["https://x.com/rhanley/status/2124148775962734769"]}, {"id": "SIG-20261123-003", "title": "手术改期后，用助手按客人常来的时间，经 WhatsApp 给近 70 人改美甲预约", "category": "Agent 与玩法", "evidence": "亲属自述", "urls": ["https://x.com/ShuiCohen/status/2122744219592786291"]}, {"id": "SIG-20261123-004", "title": "把图片、截图或单页 PDF 转成可编辑的 PPT；作者提醒复杂表格往往要重画", "category": "应用与竞品", "evidence": "作者自述", "urls": ["https://www.v2ex.com/t/1258935"]}]}, {"date": "2026-11-22", "title": "用 Grok Bot 做一段带音乐的感谢幻灯片视频——说清给谁、讲什么，它做出来，你指出错字它再改", "version": "20261122-formal-archive-1", "updated": "2026-11-25T18:22:26+08:00", "file": "issues/2026-11-22.json", "stories": [{"id": "SIG-20261122-001", "title": "用 Grok Bot 做一段带音乐的感谢幻灯片视频——说清给谁、讲什么，它做出来，你指出错字它再改", "category": "Agent 与玩法", "evidence": "作者自述", "urls": ["https://x.com/CPAwithGrokBot/status/2123933400981557759"]}, {"id": "SIG-20261122-002", "title": "Grok Bot 替你打电话预约——排队、和客服通话、先说明自己是 AI，产生费用前先问你", "category": "Agent 与玩法", "evidence": "官方说明 + 用户自述", "urls": ["https://x.com/grok/status/2121981683385663584", "https://x.com/justinfredette/status/2123579844797530399"]}, {"id": "SIG-20261122-003", "title": "拼拼账单——邻居拼单时让大家自己认领份数，自动分摊运费、算清各人应付，到货再通知", "category": "应用与竞品", "evidence": "作者自述（利益相关）", "urls": ["https://sspai.com/post/119010"]}, {"id": "SIG-20261122-004", "title": "Musset——写小说时让 AI 只做批注、不替你写，保住自己的文字", "category": "应用与竞品", "evidence": "作者自述", "urls": ["https://news.ycombinator.com/item?id=50586323"]}, {"id": "SIG-20261122-005", "title": "把桌面像素时钟改成“AI 工作灯”——同时开几个 AI 助手时，抬头看灯就知道谁在跑、谁做完、谁出错", "category": "Agent 与玩法", "evidence": "作者自述", "urls": ["https://sspai.com/post/118939"]}]}]}</script><script type="application/json" id="current-issue">{"date": "2026-11-25", "version": "20261125-revision-1", "updated": "2026-11-25T18:22:26+08:00", "title": "不会编程，先做出一个「今晚吃啥」小工具", "intro": "2026 年 11 月 25 日同日修订稿 · 正文估读约 5 分钟（按字数估算，非计时测试）。五条均为自述或介绍，未实测。", "stories": [{"id": "SIG-20261125-001", "title": "不会编程，先做出一个「今晚吃啥」小工具", "category": "Agent 与玩法", "evidence": "作者自述", "sourceDate": "2026-11-18", "urls": ["https://sspai.com/post/119208"], "bodyHtml": "\u003cp>作者称自己不会编程，先把「打开就能找菜」这个需求告诉 GPT 做规划，再交给 Codex 实现，做了微信小程序《今天给娃吃点啥》：不知道吃什么就随机推荐，冰箱里有什么就查能做什么。\u003c/p>\u003cp>对工作最有用的，不一定是这个小程序本身，而是她留下的那一步决策。她转述，第一次审核时 Codex 回报「现有菜谱：120道，可放行：0道」。她后来的回答是「可以，也不可以」：功能可以靠对话做出来，但仍必须自己当指挥官，不能把简单问题交给助手越做越复杂。\u003c/p>\u003cp>这对本期读者的启发是：让助手帮你做一个小工具、或先产出一批内容时，先想清楚「全被退回之后，谁来决定收什么」。这个判断来自作者自述，不是我们已经替你跑通了小程序。正文里没有可核的小程序路径，是否还能在微信里搜到、是不是同一款，都还没核；文中的审核经历也不能当成食品安全背书。这不是饮食建议，更不要用来安排婴幼儿或家人的每日饭菜。\u003c/p>", "summary": "作者称自己不会编程，先把「打开就能找菜」这个需求告诉 GPT 做规划，再交给 Codex 实现，做了微信小程序《今天给娃吃点啥》：不知道吃什么就随机推荐，冰箱里有什么就查能做什么。"}, {"id": "SIG-20261125-002", "title": "看外语视频，没听清的那句再划开练", "category": "应用与竞品", "evidence": "开发者介绍", "sourceDate": "2026-11-20", "urls": ["https://sspai.com/post/119261"], "bodyHtml": "\u003cp>开发者介绍电脑播放器「耳如 Earu」：用已经在看的视频练听力，目标语言字幕默认遮住，没听清再划开看一眼，还可以就这一句做练习、存生词，并且不让助手现编词典里没有的释义。值不值得装，要看你是不是正好有 Windows 或 macOS，以及能不能用上自己的片源——片库规模、打分和是否免费都还没核，中国大陆也用不了文中提到的 YouTube 和 Google Drive，没有手机版。\u003c/p>", "summary": "开发者介绍电脑播放器「耳如 Earu」：用已经在看的视频练听力，目标语言字幕默认遮住，没听清再划开看一眼，还可以就这一句做练习、存生词，并且不让助手现编词典里没有的释义。值不值得装，要看你是不是正好有 Windows 或 macOS，以及能不能用上自己的片源——片库规模、打分和是否免费都还没核，中国大陆也用不了文中提到的 YouTube 和 Google Drive，没有手机版。"}, {"id": "SIG-20261125-003", "title": "对着助手说话时，背景音乐可以自动调低", "category": "应用与竞品", "evidence": "开发者自荐", "sourceDate": "2026-11-17", "urls": ["https://sspai.com/post/119042"], "bodyHtml": "\u003cp>开发者自荐一款 Mac 应用 Auto Ducking：对着助手说话或用语音输入时，麦克风一开就把背景音乐调低，关掉后再恢复。这是普通的系统辅助，不是 AI 功能，也不等于这款应用会听写或对话。值不值得试，取决于你是不是经常一边放音乐一边讲话；买断价格和系统权限还没核，作者关于「不录音、不上传」的说明也只是声明。\u003c/p>", "summary": "开发者自荐一款 Mac 应用 Auto Ducking：对着助手说话或用语音输入时，麦克风一开就把背景音乐调低，关掉后再恢复。这是普通的系统辅助，不是 AI 功能，也不等于这款应用会听写或对话。值不值得试，取决于你是不是经常一边放音乐一边讲话；买断价格和系统权限还没核，作者关于「不录音、不上传」的说明也只是声明。"}, {"id": "SIG-20261125-004", "title": "把报错截图贴给助手，少打字描述", "category": "Agent 与玩法", "evidence": "使用者介绍", "sourceDate": "2026-11-23", "urls": ["https://sspai.com/post/119379"], "bodyHtml": "\u003cp>作者称，与其花许多时间把一个报错讲清楚，不如截一张图贴给正在用的助手，再补一句当时在做什么。这说的是截图用法，不是某款截图软件自己会对话，也不等于必须安装文中提到的 PixPin（文中还出现过 PinPix、Pixpin 等写法，正式名称未核）。就「贴图少打字」这一步，能力研究员离线推断：已有的截图工具，加上当前就能读图的助手，在机制上可能走通同一条路径。这是推断，不是实测，不能写成已经证明可以替代某一款软件。\u003c/p>", "summary": "作者称，与其花许多时间把一个报错讲清楚，不如截一张图贴给正在用的助手，再补一句当时在做什么。这说的是截图用法，不是某款截图软件自己会对话，也不等于必须安装文中提到的 PixPin（文中还出现过 PinPix、Pixpin 等写法，正式名称未核）。就「贴图少打字」这一步，能力研究员离线推断：已有的截图工具，加上当前就能读图的助手，在机制上可能走通同一条路径。这是推断，不是实测，不能写成已经证明可以替代某一款软件。", "trialHtml": "\u003cp>待执行，只检查截图到读图助手的通用机制，不验证 PixPin。无需安装任何新软件；仅用已有截图工具和当前能读图、能接收图片的助手。不要使用真实报错或敏感屏幕。\u003c/p>\u003cp>\u003cstrong>输入：\u003c/strong>在已有编辑器显示下列虚构文字，只截这段。无需创建所写的文件或路径。\u003c/p>\u003cpre>【练习用示例，不是本机真实故障，请勿按此排查真实系统】\n\n无法打开文件：demo_notes.txt\n原因：找不到该文件。\n位置：/tmp/radar-demo/demo_notes.txt\u003c/pre>\u003cp>\u003cstrong>操作：\u003c/strong>只发送截图及下面固定提问，不额外粘贴示例文字：\u003c/p>\u003cblockquote>请只根据这张图作答：逐字抄出报错的文件名和完整路径；把图中写明的原因与猜测分开；下一步建议不得删除、覆盖或格式化，也不得捏造图中没有的按钮、菜单、软件名或错误码。\u003c/blockquote>\u003cp>\u003cstrong>通过：\u003c/strong>确实看图，准确写出 \u003ccode>demo_notes.txt\u003c/code> 和 \u003ccode>/tmp/radar-demo/demo_notes.txt\u003c/code>，对应「找不到该文件」且区分事实与猜测，建议不破坏数据、不编造界面。\u003cstrong>失败：\u003c/strong>已交图但抄错／编造、混淆推测与事实，或给出破坏性建议。\u003cstrong>阻塞：\u003c/strong>不能上传或读图，或只用抄写／OCR 文字代替看图；不得把这算通过。\u003c/p>\u003cp>尚未执行，一次通过也只对这一张自造示例有效，不证明真实故障都能处理，更不是安装或购买 PixPin 的理由。\u003c/p>"}, {"id": "SIG-20261125-005", "title": "录完口播，先去停顿，再按字幕删错字", "category": "应用与竞品", "evidence": "作者／开发者自述", "sourceDate": "2026-11-20", "urls": ["https://sspai.com/post/119315"], "bodyHtml": "\u003cp>作者称，在搭载 Apple 芯片的 Mac 上录完屏幕演示和口播后，可以先去掉停顿，再按字幕删掉说错的字。去停顿和按字幕删字是常规剪辑，不要写成 AI 功能；只有较长口误才提到交给本机已有助手出方案，而且默认要先预览，不要把未确认的修改当成已经生效。原文写「导出之前免费开放」，但没写清导出是否收费，现价未核；Windows 版作者称还在开发。\u003c/p>", "summary": "作者称，在搭载 Apple 芯片的 Mac 上录完屏幕演示和口播后，可以先去掉停顿，再按字幕删掉说错的字。去停顿和按字幕删字是常规剪辑，不要写成 AI 功能；只有较长口误才提到交给本机已有助手出方案，而且默认要先预览，不要把未确认的修改当成已经生效。原文写「导出之前免费开放」，但没写清导出是否收费，现价未核；Windows 版作者称还在开发。"}], "editorTitle": "先看谁来决定收什么，再决定要不要试", "editorHtml": "\u003cp>这期把「今晚吃啥」放在头条，不是因为我们已经确认这个小程序能打开、菜谱能用，而是因为它把一个很具体的日常麻烦，和「助手做出来之后，谁来拍板」放在一起。120 道里 0 道可放行，只是作者记录的一次审核结果；真正值得带走的，是她自己写下的那句「可以，也不可以」。\u003c/p>\u003cp>所以本期没有把更多「只起草、不代发」或权限边界的案例再铺进来，也没有为了凑覆盖去写还没核清的插件和产品更新。Auto Ducking、截图工具和按字幕删字，我都保留了，但把它们当作普通辅助，没有写成 AI 能力。\u003c/p>\u003cp>如果你这期只做一件事：当前助手已经能读图的话，就按上面「今天可试」走一遍那张虚构的「找不到文件」截图，看它会不会把事实和猜测分开，会不会劝你去点一个图里没有的按钮。不能读图就先别做这个测试，也不要为此去装新软件；更值得记住的，仍是头条里那条习惯——让助手先做一个小东西时，先写清全被退回之后由谁决定收什么。\u003c/p>", "proof": ["120", "道候选菜谱", "0", "道可放行", "作者转述的单次审核结果；不是本刊统计，也不是食品安全结论。"], "note": "日期只核到原文页面日历日，精确钟点未核。入口 8／8；确定初筛至少 31／20（已超额），候选 16 行／14 个原文，收录 5 条，整体不视为合规。", "evidenceRows": [["SIG-20261125-001", "作者自述", "2026-11-18", "小程序当前可用性、身份未核；非食品安全背书。"], ["SIG-20261125-002", "开发者介绍", "2026-11-20", "现价、隐私与数据去向、片库和效果待核；登录需手机号，翻译与计分需联网。"], ["SIG-20261125-003", "开发者自荐", "2026-11-17", "买断价格与权限待核；不录音、不上传仅为作者声明；Mac 辅助工具，非 AI。"], ["SIG-20261125-004", "使用者介绍", "2026-11-23", "产品名与专属价值待核；可试方案尚未执行，不验证软件会员价值或离线承诺。"], ["SIG-20261125-005", "作者／开发者自述", "2026-11-20", "导出费用与先预览范围待核；Apple 芯片 Mac；常规剪辑不强标 AI。"]], "evidenceIntro": "五篇原文已由能力研究员核对可见正文；不是官方发布、独立复现或本次实测。采集：国内发现员；核对与方案：能力研究员；编辑：RadarChief。"}</script><script>/* AI玩法日报 — Attachment B local archive. No external scripts or requests except own issue JSON. */
+(function () {
+  'use strict';
+  const PAGE_SIZE = 10;
+  function orderedIssues(index) { return [...index.issues].sort((a, b) => b.date.localeCompare(a.date)); }
+  function hasIssue(index, date) { return index.issues.some(issue => issue.date === date); }
+  function archiveEntries(index, category, page) {
+    const all = orderedIssues(index).map(issue => {
+      const matching = issue.stories.filter(story => !category || story.category === category);
+      return { date: issue.date, title: issue.title, stories: issue.stories, matching };
+    }).filter(entry => entry.matching.length > 0);
+    const pages = Math.max(1, Math.ceil(all.length / PAGE_SIZE) || 1);
+    const bounded = Math.max(0, Math.min(page, pages - 1));
+    return { total: all.length, pages, page: bounded, entries: all.slice(bounded * PAGE_SIZE, (bounded + 1) * PAGE_SIZE) };
+  }
+  function calendarCells(index, year, month) {
+    const start = (new Date(Date.UTC(year, month, 1)).getUTCDay() + 6) % 7;
+    const total = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+    return [...Array(start).fill(null), ...Array.from({ length: total }, (_, i) => {
+      const date = new Date(Date.UTC(year, month, i + 1)).toISOString().slice(0, 10);
+      return { date, day: i + 1, disabled: !hasIssue(index, date) };
+    })];
+  }
+  if (typeof module !== 'undefined' && module.exports) module.exports = { PAGE_SIZE, orderedIssues, hasIssue, archiveEntries, calendarCells };
+  if (typeof document === 'undefined') return;
+  const index = JSON.parse(document.getElementById('archive-index').textContent);
+  const current = JSON.parse(document.getElementById('current-issue').textContent);
+  const cache = new Map([[current.date, current]]);
+  const $ = id => document.getElementById(id);
+  const calendar = $('issue-calendar');
+  let selectedDate = current.date;
+  let month = new Date(current.date.slice(0, 7) + '-01T00:00:00Z');
+  let archivePage = 0;
+  let routeToken = 0;
+  const topics = [...new Set(index.issues.flatMap(i => i.stories.map(s => s.category)))].sort();
+  const esc = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+  function dateLabel(date) { const [y,m,d] = date.split('-').map(Number); return `${y} 年 ${m} 月 ${d} 日`; }
+  function source(story) {
+    return `<p class="source brief-source"><a class="brief-topic" href="#archive?topic=${encodeURIComponent(story.category)}">${esc(story.category)}</a>${story.urls.map((url,i) => `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">原文${story.urls.length > 1 ? i+1 : ''}</a>`).join('')}<span>${esc(story.evidence)} · ${esc(story.id)}</span></p>`;
+  }
+  function trial(story) { return story.trialHtml ? `<details class="try-it"><summary><strong>今天可试</strong> 自造报错截图（待执行）</summary>${story.trialHtml}</details>` : ''; }
+  function storyHTML(story, isLead, proof) {
+    if (isLead) {
+      const figure = proof ? `<figure class="proof"><div class="proof-values"><div><strong>${esc(proof[0])}</strong><small>${esc(proof[1])}</small></div><i aria-hidden="true"></i><div class="last"><strong>${esc(proof[2])}</strong><small>${esc(proof[3])}</small></div></div><figcaption>${esc(proof[4])}</figcaption></figure>` : '';
+      return `<article class="lead" id="${esc(story.id)}"><div class="${proof ? 'cover' : ''}"><div><h2 id="lead-title">${esc(story.title)}</h2>${source(story)}</div>${figure}</div><div class="lead-copy">${story.bodyHtml}</div>${trial(story)}</article>`;
+    }
+    return `<li><article class="story" id="${esc(story.id)}"><h3>${esc(story.title)}</h3><div class="teaser">${story.bodyHtml}</div>${source(story)}${trial(story)}</article></li>`;
+  }
+  function renderIssue(data) {
+    const [lead, ...rest] = data.stories;
+    let content = storyHTML(lead, true, data.proof);
+    content += `<section aria-labelledby="issue-items-title"><div class="section-head"><h2 id="issue-items-title">本期速览</h2></div><ul class="items" id="issue-items">${rest.map(s => storyHTML(s, false)).join('')}</ul></section>`;
+    if (data.editorHtml) content += `<div class="editorial"><article class="editor-note"><h2>主编的话</h2><h3>${esc(data.editorTitle)}</h3><div class="editor-copy">${data.editorHtml}</div></article></div>`;
+    const table = data.evidenceRows.length ? `<div class="table-scroll"><table><thead><tr><th>编号</th><th>证据类型</th><th>原文日期（日历日）</th><th>待核与限制</th></tr></thead><tbody>${data.evidenceRows.map(row => '<tr>' + row.map(v => `<td>${esc(v)}</td>`).join('') + '</tr>').join('')}</tbody></table></div>` : '';
+    content += `<details class="evidence-box"><summary>来源与证据说明 · ${esc(data.version)}</summary><p>${esc(data.evidenceIntro)}</p>${table}<p>${esc(data.note)}</p></details>`;
+    $('issue').innerHTML = content;
+    $('issue-intro').textContent = data.intro;
+    selectedDate = data.date;
+    $('issue-date').dateTime = data.date;
+    $('issue-date').textContent = dateLabel(data.date);
+    calendar.querySelector('summary').setAttribute('aria-label', dateLabel(data.date) + '，打开日报日历');
+    document.title = `AI玩法日报｜${data.date}`;
+    month = new Date(data.date.slice(0, 7) + '-01T00:00:00Z');
+    renderCalendar();
+  }
+  function renderCalendar() {
+    const y = month.getUTCFullYear(), m = month.getUTCMonth();
+    $('calendar-month').textContent = `${y} 年 ${m+1} 月`;
+    $('calendar-days').replaceChildren(...calendarCells(index, y, m).map(cell => {
+      if (!cell) return document.createElement('span');
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = cell.day;
+      b.dataset.date = cell.date; b.disabled = cell.disabled;
+      b.setAttribute('aria-label', `${dateLabel(cell.date)}，${cell.disabled ? '无日报' : '有日报'}`);
+      if (cell.date === selectedDate) b.setAttribute('aria-current', 'date');
+      return b;
+    }));
+  }
+  async function loadIssue(date) {
+    if (cache.has(date)) return cache.get(date);
+    const meta = index.issues.find(i => i.date === date);
+    if (!meta) throw new Error('该日期没有已归档的日报。');
+    if (location.protocol === 'file:') throw new Error('直接打开文件时，历史正文需要 HTTP 服务。当前稿可离线阅读；请通过完整归档的 HTTP 地址切换往期。');
+    const response = await fetch(meta.file, { credentials: 'omit' });
+    if (!response.ok) throw new Error(`历史正文未能加载（HTTP ${response.status}）。请确认完整 issues 目录随网页一起保存。`);
+    const data = await response.json();
+    if (data.date !== date || !Array.isArray(data.stories) || !data.stories.length) throw new Error('归档日期或正文数据不符，未切换刊期。');
+    cache.set(date, data); return data;
+  }
+  function closeCalendar(restoreFocus) {
+    calendar.open = false;
+    if (restoreFocus) calendar.querySelector('summary').focus();
+  }
+  function renderArchive(category) {
+    const state = archiveEntries(index, category, archivePage); archivePage = state.page;
+    $('archive-items').innerHTML = state.entries.map(entry => {
+      const listed = category ? entry.matching : entry.stories;
+      const note = category
+        ? `本期含「${esc(category)}」${entry.matching.length} 条，共 ${entry.stories.length} 条报道。点击一条即打开该刊期并滚到对应报道。`
+        : `共 ${entry.stories.length} 条报道。点击一条即打开该刊期并滚到对应报道。`;
+      const briefs = listed.map(story => `<li><a href="#${entry.date}?story=${encodeURIComponent(story.id)}">${esc(story.title)}</a><a class="brief-topic" href="#archive?topic=${encodeURIComponent(story.category)}">${esc(story.category)}</a></li>`).join('');
+      return `<li class="archive-issue"><a class="issue-link" href="#${entry.date}">${entry.date}<br>打开整期</a><article class="story"><p class="category">刊期头条</p><h3><a href="#${entry.date}">${esc(entry.title)}</a></h3><p class="archive-match">${note}</p><ul class="archive-briefs">${briefs}</ul></article></li>`;
+    }).join('');
+    const filter = category ? `筛选含「${category}」的刊期` : '全部主题';
+    if (!state.total) {
+      $('archive-status').textContent = `没有含「${category}」的刊期。`;
+    } else if (state.pages <= 1) {
+      $('archive-status').textContent = `按刊期倒序 · ${filter} · 共 ${state.total} 期 · 每页最多 10 期 · 本页 ${state.total} 期，无须翻页`;
+    } else {
+      const start = state.page * PAGE_SIZE + 1;
+      const end = Math.min((state.page + 1) * PAGE_SIZE, state.total);
+      $('archive-status').textContent = `按刊期倒序 · ${filter} · 共 ${state.total} 期 · 每页最多 10 期 · 显示第 ${start}–${end} 期`;
+    }
+    $('page-number').textContent = `${state.page + 1} / ${state.pages}`;
+    $('previous-page').disabled = state.page === 0;
+    $('next-page').disabled = state.page + 1 >= state.pages;
+    $('pager').hidden = state.pages <= 1;
+    document.title = '往期与主题｜AI玩法日报';
+  }
+  function archiveCategory() {
+    const raw = location.hash.slice(1).split('?')[1];
+    const category = new URLSearchParams(raw).get('topic') || '';
+    return topics.includes(category) ? category : '';
+  }
+  async function route(scroll) {
+    const token = ++routeToken;
+    const target = location.hash.slice(1);
+    $('load-notice').hidden = true;
+    if (target === 'archive' || target.startsWith('archive?')) {
+      const category = archiveCategory(); $('topic').value = category;
+      archivePage = 0;
+      $('issue').hidden = true; $('issue-intro').hidden = true; $('archive').hidden = false;
+      $('view-link').href = '#' + selectedDate; $('view-link').textContent = '返回本期';
+      renderArchive(category);
+      if (scroll) { window.scrollTo(0, 0); $('archive-title').focus({preventScroll:true}); }
+      return;
+    }
+    const requested = target.split('?')[0];
+    const date = hasIssue(index, requested) ? requested : index.latest;
+    try {
+      const data = await loadIssue(date);
+      if (token !== routeToken) return;
+      renderIssue(data);
+      $('issue').hidden = false; $('issue-intro').hidden = false; $('archive').hidden = true;
+      $('view-link').href = '#archive'; $('view-link').textContent = '往期与主题';
+      const story = new URLSearchParams(target.split('?')[1]).get('story');
+      if (scroll) window.scrollTo(0, 0);
+      if (story && data.stories.some(s => s.id === story)) document.getElementById(story)?.scrollIntoView({block:'start'});
+    } catch (error) {
+      if (token !== routeToken) return;
+      renderIssue(current); $('issue').hidden = false; $('issue-intro').hidden = false; $('archive').hidden = true;
+      $('view-link').href = '#archive'; $('view-link').textContent = '往期与主题';
+      $('load-notice').textContent = `${error.message} 以下仍是 ${current.date} 当前修订稿，不是所选历史刊期。`;
+      $('load-notice').hidden = false;
+    }
+  }
+  for (const name of topics) { const o = document.createElement('option'); o.value = name; o.textContent = name; $('topic').append(o); }
+  $('month-prev').addEventListener('click', () => { month = new Date(Date.UTC(month.getUTCFullYear(),month.getUTCMonth()-1,1)); renderCalendar(); });
+  $('month-next').addEventListener('click', () => { month = new Date(Date.UTC(month.getUTCFullYear(),month.getUTCMonth()+1,1)); renderCalendar(); });
+  $('calendar-days').addEventListener('click', event => { const b=event.target.closest('button[data-date]'); if (!b || b.disabled) return; closeCalendar(true); location.hash=b.dataset.date; });
+  $('calendar-close').addEventListener('click', () => closeCalendar(true));
+  calendar.addEventListener('keydown', event => { if(event.key==='Escape' && calendar.open) closeCalendar(true); });
+  document.addEventListener('click', event => { if(calendar.open && !calendar.contains(event.target)) closeCalendar(false); });
+  $('topic').addEventListener('change', () => { location.hash = $('topic').value ? 'archive?topic='+encodeURIComponent($('topic').value) : 'archive'; });
+  $('previous-page').addEventListener('click', () => {archivePage--;renderArchive(archiveCategory());$('archive-title').focus();});
+  $('next-page').addEventListener('click', () => {archivePage++;renderArchive(archiveCategory());$('archive-title').focus();});
+  window.addEventListener('hashchange', () => route(true));
+  renderCalendar(); route(false);
+})();
+</script></body></html>
