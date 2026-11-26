@@ -77,28 +77,37 @@
     }
     return body + trialHtml;
   }
+  function takeFigure(html) {
+    const box = document.createElement('div');
+    box.innerHTML = html || '';
+    const fig = box.querySelector('figure');
+    let figure = '';
+    if (fig) { figure = fig.outerHTML; fig.remove(); }
+    const split = box.querySelector('.lead-split');
+    if (split) split.replaceWith(...split.childNodes);
+    return { html: box.innerHTML.trim(), figure };
+  }
   function storyHTML(story, isLead, proof) {
     const meta = storyMeta(story);
     const alreadyHasTrial = /class="try-it"/.test(story.bodyHtml || '');
     const trialHtml = alreadyHasTrial ? '' : trial(story);
     if (isLead) {
-      const figure = proof ? `<figure class="proof"><div class="proof-values"><div><strong>${esc(proof[0])}</strong><small>${esc(proof[1])}</small></div><i aria-hidden="true"></i><div class="last"><strong>${esc(proof[2])}</strong><small>${esc(proof[3])}</small></div></div><figcaption>${esc(proof[4])}</figcaption></figure>` : '';
-      let body = story.bodyHtml || '';
-      if (body.includes('lead-split')) {
-        body = injectTrial(body, trialHtml);
-      } else if (figure) {
-        body = `<div class="lead-copy"><div class="story-media story-media--aside"><div class="story-media-text">${body}</div>${figure}</div></div>` + trialHtml;
-      } else {
-        body = `<div class="lead-copy">${body}</div>` + trialHtml;
-      }
-      return `<article class="lead" id="${esc(story.id)}"><h2 id="lead-title">${esc(story.title)}</h2>${story.dek ? `<p class="dek">${esc(story.dek)}</p>` : ''}${body}${meta}</article>`;
+      const proofFig = proof ? `<figure class="proof"><div class="proof-values"><div><strong>${esc(proof[0])}</strong><small>${esc(proof[1])}</small></div><i aria-hidden="true"></i><div class="last"><strong>${esc(proof[2])}</strong><small>${esc(proof[3])}</small></div></div><figcaption>${esc(proof[4])}</figcaption></figure>` : '';
+      let { html: body, figure } = takeFigure(story.bodyHtml || '');
+      if (!figure) figure = proofFig;
+      if (body.includes('lead-follow')) body = injectTrial(body, trialHtml);
+      else body = `<div class="lead-copy">${body}</div>` + trialHtml;
+      const dek = story.dek ? `<p class="dek">${esc(story.dek)}</p>` : '';
+      const main = `<div class="lead-main"><h2 id="lead-title">${esc(story.title)}</h2>${dek}${body}${meta}</div>`;
+      const cardClass = figure ? 'lead-card lead-card--split' : 'lead-card';
+      return `<article class="lead" id="${esc(story.id)}"><div class="${cardClass}">${main}${figure}</div></article>`;
     }
     return `<li><article class="story" id="${esc(story.id)}"><h3>${esc(story.title)}</h3><div class="teaser">${story.bodyHtml || ''}</div>${trialHtml}${meta}</article></li>`;
   }
   function renderIssue(data) {
     const [lead, ...rest] = data.stories;
     let content = storyHTML(lead, true, data.proof);
-    content += `<section aria-labelledby="issue-items-title"><div class="section-head"><h2 id="issue-items-title">本期速览</h2></div><ul class="items" id="issue-items">${rest.map(s => storyHTML(s, false)).join('')}</ul></section>`;
+    content += `<section class="briefs-panel" aria-labelledby="issue-items-title"><div class="section-head"><h2 id="issue-items-title">本期速览</h2></div><ul class="items" id="issue-items">${rest.map(s => storyHTML(s, false)).join('')}</ul></section>`;
     if (data.editorHtml) content += `<div class="editorial"><article class="editor-note"><h2>主编的话</h2><h3>${esc(data.editorTitle)}</h3><div class="editor-copy">${data.editorHtml}</div></article></div>`;
     $('issue').innerHTML = content;
     $('issue-intro').textContent = '';
@@ -110,6 +119,7 @@
     document.title = `AI玩法日报｜${data.date}`;
     month = new Date(data.date.slice(0, 7) + '-01T00:00:00Z');
     renderCalendar();
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(syncIssueNav);
   }
   function renderCalendar() {
     const y = month.getUTCFullYear(), m = month.getUTCMonth();
@@ -250,5 +260,17 @@
   $('previous-page').addEventListener('click', () => {archivePage--;renderArchive(archiveCategory());$('archive-title').focus();});
   $('next-page').addEventListener('click', () => {archivePage++;renderArchive(archiveCategory());$('archive-title').focus();});
   window.addEventListener('hashchange', () => route(true));
-  renderCalendar(); route(false);
+  function syncIssueNav() {
+    const nav = $('issue-nav');
+    const brand = document.querySelector('.masthead');
+    if (!nav || !brand) return;
+    const desktop = window.matchMedia('(min-width: 768px)').matches;
+    nav.style.marginTop = desktop ? `-${brand.offsetHeight}px` : '';
+    const brandBottom = brand.getBoundingClientRect().bottom;
+    nav.classList.toggle('is-stuck', brandBottom <= 1);
+  }
+  window.addEventListener('scroll', syncIssueNav, { passive: true });
+  window.addEventListener('resize', syncIssueNav);
+  renderCalendar(); route(false).then(() => requestAnimationFrame(syncIssueNav));
+  requestAnimationFrame(syncIssueNav);
 })();

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "latest": "2026-11-26",
-  "updated": "2026-11-26T10:51:16+08:00",
+  "updated": "2026-11-26T11:49:19+08:00",
   "pageSize": 10,
   "issues": [
     {
       "date": "2026-11-26",
       "title": "让 Grok Bot 帮你找演出门票，下单前由你确认",
-      "version": "20261126-formal-5",
-      "updated": "2026-11-26T10:51:16+08:00",
+      "version": "20261126-formal-6",
+      "updated": "2026-11-26T11:49:19+08:00",
       "file": "issues/2026-11-26.json",
       "stories": [
         {
