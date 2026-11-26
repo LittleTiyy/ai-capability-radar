@@ -35,26 +35,74 @@
   const topics = [...new Set(index.issues.flatMap(i => i.stories.map(s => s.category)))].sort();
   const esc = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
   function dateLabel(date) { const [y,m,d] = date.split('-').map(Number); return `${y} 年 ${m} 月 ${d} 日`; }
-  function source(story) {
-    return `<p class="source brief-source"><a class="brief-topic" href="#archive?topic=${encodeURIComponent(story.category)}">${esc(story.category)}</a>${story.urls.map((url,i) => `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">原文${story.urls.length > 1 ? i+1 : ''}</a>`).join('')}<span>${esc(story.evidence)} · ${esc(story.id)}</span></p>`;
+  function httpUrls(story) {
+    return (story.urls || []).filter(url => /^https?:\/\//i.test(String(url)));
   }
-  function trial(story) { return story.trialHtml ? `<details class="try-it"><summary><strong>今天可试</strong> ${esc(story.trialLabel || '待执行')}</summary>${story.trialHtml}</details>` : ''; }
+  function sourceEntry(story) {
+    const urls = httpUrls(story);
+    const date = story.sourceDate ? String(story.sourceDate) : '';
+    const evidence = story.evidence ? String(story.evidence) : '';
+    if (!urls.length && !date && !evidence) return '';
+    const links = urls.map((url, i) => `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">原文${urls.length > 1 ? i + 1 : ''}</a>`).join('');
+    const dateHtml = date ? `<span class="source-date">${esc(date)}</span>` : '';
+    const evHtml = evidence ? `<span class="source-evidence">${esc(evidence)}</span>` : '';
+    const panelId = `source-panel-${esc(String(story.id || 'story').replace(/[^A-Za-z0-9_-]/g, ''))}`;
+    return `<span class="source-entry"><button type="button" class="source-toggle" aria-expanded="false" aria-controls="${panelId}">来源</button><span class="source-panel" id="${panelId}" role="region">${links}${dateHtml}${evHtml}</span></span>`;
+  }
+  function storyMeta(story) {
+    const topic = story.category
+      ? `<a class="brief-topic" href="#archive?topic=${encodeURIComponent(story.category)}">${esc(story.category)}</a>`
+      : '';
+    const source = sourceEntry(story);
+    if (!topic && !source) return '';
+    return `<p class="story-meta">${topic}${source}</p>`;
+  }
+  function trial(story) {
+    if (!story.trialHtml) return '';
+    const label = story.trialAction || story.trialLabel || '今天可试';
+    return `<details class="try-it"><summary><strong>${esc(label)}</strong></summary>${story.trialHtml}</details>`;
+  }
+  function injectTrial(body, trialHtml) {
+    if (!trialHtml) return body;
+    const start = body.search(/<div class="lead-follow"[^>]*>/);
+    if (start < 0) return body + trialHtml;
+    const openEnd = body.indexOf('>', start) + 1;
+    let depth = 1, i = openEnd;
+    while (i < body.length && depth > 0) {
+      const nextOpen = body.indexOf('<div', i);
+      const nextClose = body.indexOf('</div>', i);
+      if (nextClose < 0) break;
+      if (nextOpen >= 0 && nextOpen < nextClose) { depth++; i = nextOpen + 4; }
+      else { depth--; if (depth === 0) return body.slice(0, nextClose) + trialHtml + body.slice(nextClose); i = nextClose + 6; }
+    }
+    return body + trialHtml;
+  }
   function storyHTML(story, isLead, proof) {
+    const meta = storyMeta(story);
+    const alreadyHasTrial = /class="try-it"/.test(story.bodyHtml || '');
+    const trialHtml = alreadyHasTrial ? '' : trial(story);
     if (isLead) {
       const figure = proof ? `<figure class="proof"><div class="proof-values"><div><strong>${esc(proof[0])}</strong><small>${esc(proof[1])}</small></div><i aria-hidden="true"></i><div class="last"><strong>${esc(proof[2])}</strong><small>${esc(proof[3])}</small></div></div><figcaption>${esc(proof[4])}</figcaption></figure>` : '';
-      return `<article class="lead" id="${esc(story.id)}"><div class="${proof ? 'cover' : ''}"><div><h2 id="lead-title">${esc(story.title)}</h2>${story.dek ? `<p class="dek">${esc(story.dek)}</p>` : ''}${source(story)}</div>${figure}</div><div class="lead-copy">${story.bodyHtml}</div>${trial(story)}</article>`;
+      let body = story.bodyHtml || '';
+      if (body.includes('lead-split')) {
+        body = injectTrial(body, trialHtml);
+      } else if (figure) {
+        body = `<div class="lead-copy"><div class="story-media story-media--aside"><div class="story-media-text">${body}</div>${figure}</div></div>` + trialHtml;
+      } else {
+        body = `<div class="lead-copy">${body}</div>` + trialHtml;
+      }
+      return `<article class="lead" id="${esc(story.id)}"><h2 id="lead-title">${esc(story.title)}</h2>${story.dek ? `<p class="dek">${esc(story.dek)}</p>` : ''}${body}${meta}</article>`;
     }
-    return `<li><article class="story" id="${esc(story.id)}"><h3>${esc(story.title)}</h3><div class="teaser">${story.bodyHtml}</div>${source(story)}${trial(story)}</article></li>`;
+    return `<li><article class="story" id="${esc(story.id)}"><h3>${esc(story.title)}</h3><div class="teaser">${story.bodyHtml || ''}</div>${trialHtml}${meta}</article></li>`;
   }
   function renderIssue(data) {
     const [lead, ...rest] = data.stories;
     let content = storyHTML(lead, true, data.proof);
     content += `<section aria-labelledby="issue-items-title"><div class="section-head"><h2 id="issue-items-title">本期速览</h2></div><ul class="items" id="issue-items">${rest.map(s => storyHTML(s, false)).join('')}</ul></section>`;
     if (data.editorHtml) content += `<div class="editorial"><article class="editor-note"><h2>主编的话</h2><h3>${esc(data.editorTitle)}</h3><div class="editor-copy">${data.editorHtml}</div></article></div>`;
-    const table = data.evidenceRows.length ? `<div class="table-scroll"><table><thead><tr><th>编号</th><th>证据类型</th><th>原文日期（日历日）</th><th>待核与限制</th></tr></thead><tbody>${data.evidenceRows.map(row => '<tr>' + row.map(v => `<td>${esc(v)}</td>`).join('') + '</tr>').join('')}</tbody></table></div>` : '';
-    content += `<details class="evidence-box"><summary>来源与证据说明 · ${esc(data.version)}</summary><p>${esc(data.evidenceIntro)}</p>${table}<p>${esc(data.note)}</p></details>`;
     $('issue').innerHTML = content;
-    $('issue-intro').textContent = data.intro;
+    $('issue-intro').textContent = '';
+    $('issue-intro').hidden = true;
     selectedDate = data.date;
     $('issue-date').dateTime = data.date;
     $('issue-date').textContent = dateLabel(data.date);
@@ -89,6 +137,15 @@
   function closeCalendar(restoreFocus) {
     calendar.open = false;
     if (restoreFocus) calendar.querySelector('summary').focus();
+  }
+  function closeSourceEntries(except) {
+    document.querySelectorAll('.source-entry').forEach(el => {
+      if (el !== except) {
+        el.classList.remove('is-open', 'is-hover');
+        const btn = el.querySelector('.source-toggle');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
   function renderArchive(category) {
     const state = archiveEntries(index, category, archivePage); archivePage = state.page;
@@ -140,14 +197,14 @@
       const data = await loadIssue(date);
       if (token !== routeToken) return;
       renderIssue(data);
-      $('issue').hidden = false; $('issue-intro').hidden = false; $('archive').hidden = true;
+      $('issue').hidden = false; $('issue-intro').hidden = true; $('archive').hidden = true;
       $('view-link').href = '#archive'; $('view-link').textContent = '往期与主题';
       const story = new URLSearchParams(target.split('?')[1]).get('story');
       if (scroll) window.scrollTo(0, 0);
       if (story && data.stories.some(s => s.id === story)) document.getElementById(story)?.scrollIntoView({block:'start'});
     } catch (error) {
       if (token !== routeToken) return;
-      renderIssue(current); $('issue').hidden = false; $('issue-intro').hidden = false; $('archive').hidden = true;
+      renderIssue(current); $('issue').hidden = false; $('issue-intro').hidden = true; $('archive').hidden = true;
       $('view-link').href = '#archive'; $('view-link').textContent = '往期与主题';
       $('load-notice').textContent = `${error.message} 以下仍是 ${current.date} 当前修订稿，不是所选历史刊期。`;
       $('load-notice').hidden = false;
@@ -159,7 +216,36 @@
   $('calendar-days').addEventListener('click', event => { const b=event.target.closest('button[data-date]'); if (!b || b.disabled) return; closeCalendar(true); location.hash=b.dataset.date; });
   $('calendar-close').addEventListener('click', () => closeCalendar(true));
   calendar.addEventListener('keydown', event => { if(event.key==='Escape' && calendar.open) closeCalendar(true); });
-  document.addEventListener('click', event => { if(calendar.open && !calendar.contains(event.target)) closeCalendar(false); });
+  document.addEventListener('pointerover', event => {
+    const entry = event.target.closest('.source-entry');
+    if (!entry) return;
+    document.querySelectorAll('.source-entry.is-hover').forEach(el => { if (el !== entry) el.classList.remove('is-hover'); });
+    entry.classList.add('is-hover');
+  });
+  document.addEventListener('pointerout', event => {
+    const entry = event.target.closest('.source-entry');
+    if (!entry) return;
+    const next = event.relatedTarget;
+    if (next && entry.contains(next instanceof Node ? next : null)) return;
+    entry.classList.remove('is-hover');
+  });
+  document.addEventListener('click', event => {
+    if (calendar.open && !calendar.contains(event.target)) closeCalendar(false);
+    if (event.target.closest('a') && event.target.closest('.source-panel')) return;
+    const toggle = event.target.closest('.source-toggle');
+    const source = event.target.closest('.source-entry');
+    if (toggle && source) {
+      const opening = !source.classList.contains('is-open');
+      closeSourceEntries(opening ? source : null);
+      source.classList.toggle('is-open', opening);
+      toggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      return;
+    }
+    closeSourceEntries();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeSourceEntries();
+  });
   $('topic').addEventListener('change', () => { location.hash = $('topic').value ? 'archive?topic='+encodeURIComponent($('topic').value) : 'archive'; });
   $('previous-page').addEventListener('click', () => {archivePage--;renderArchive(archiveCategory());$('archive-title').focus();});
   $('next-page').addEventListener('click', () => {archivePage++;renderArchive(archiveCategory());$('archive-title').focus();});
