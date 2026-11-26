@@ -38,11 +38,11 @@
   function source(story) {
     return `<p class="source brief-source"><a class="brief-topic" href="#archive?topic=${encodeURIComponent(story.category)}">${esc(story.category)}</a>${story.urls.map((url,i) => `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">原文${story.urls.length > 1 ? i+1 : ''}</a>`).join('')}<span>${esc(story.evidence)} · ${esc(story.id)}</span></p>`;
   }
-  function trial(story) { return story.trialHtml ? `<details class="try-it"><summary><strong>今天可试</strong> 自造报错截图（待执行）</summary>${story.trialHtml}</details>` : ''; }
+  function trial(story) { return story.trialHtml ? `<details class="try-it"><summary><strong>今天可试</strong> ${esc(story.trialLabel || '待执行')}</summary>${story.trialHtml}</details>` : ''; }
   function storyHTML(story, isLead, proof) {
     if (isLead) {
       const figure = proof ? `<figure class="proof"><div class="proof-values"><div><strong>${esc(proof[0])}</strong><small>${esc(proof[1])}</small></div><i aria-hidden="true"></i><div class="last"><strong>${esc(proof[2])}</strong><small>${esc(proof[3])}</small></div></div><figcaption>${esc(proof[4])}</figcaption></figure>` : '';
-      return `<article class="lead" id="${esc(story.id)}"><div class="${proof ? 'cover' : ''}"><div><h2 id="lead-title">${esc(story.title)}</h2>${source(story)}</div>${figure}</div><div class="lead-copy">${story.bodyHtml}</div>${trial(story)}</article>`;
+      return `<article class="lead" id="${esc(story.id)}"><div class="${proof ? 'cover' : ''}"><div><h2 id="lead-title">${esc(story.title)}</h2>${story.dek ? `<p class="dek">${esc(story.dek)}</p>` : ''}${source(story)}</div>${figure}</div><div class="lead-copy">${story.bodyHtml}</div>${trial(story)}</article>`;
     }
     return `<li><article class="story" id="${esc(story.id)}"><h3>${esc(story.title)}</h3><div class="teaser">${story.bodyHtml}</div>${source(story)}${trial(story)}</article></li>`;
   }

@@ -1,9 +1,54 @@
 {
   "schemaVersion": 1,
-  "latest": "2026-11-25",
-  "updated": "2026-11-25T18:22:26+08:00",
+  "latest": "2026-11-26",
+  "updated": "2026-11-26T08:57:24+08:00",
   "pageSize": 10,
   "issues": [
+    {
+      "date": "2026-11-26",
+      "title": "先避开日历冲突，再看结账才买门票",
+      "version": "20261126-formal-1",
+      "updated": "2026-11-26T08:57:24+08:00",
+      "file": "issues/2026-11-26.json",
+      "stories": [
+        {
+          "id": "SIG-20261126-001",
+          "title": "先避开日历冲突，再看结账才买门票",
+          "category": "Agent 与玩法",
+          "evidence": "作者自述加自备聊天截图",
+          "urls": [
+            "https://x.com/TonyChanBuilds/status/2124187182130745540"
+          ]
+        },
+        {
+          "id": "SIG-20261126-002",
+          "title": "老板一派活，就自动在钉钉里记一条待办",
+          "category": "应用与竞品",
+          "evidence": "官方更新日志声明",
+          "urls": [
+            "https://docs.qwenwork.cn/release-notes/desktop"
+          ]
+        },
+        {
+          "id": "SIG-20261126-003",
+          "title": "先找会员价，再请助手到邮件里确认你还是不是会员",
+          "category": "Agent 与玩法",
+          "evidence": "作者自述加自备界面截图（作者与产品相关）",
+          "urls": [
+            "https://x.com/mattyp/status/2125318602320752971"
+          ]
+        },
+        {
+          "id": "SIG-20261126-004",
+          "title": "把说明丢给助手，让它去翻邮件里可能的重复扣款",
+          "category": "Agent 与玩法",
+          "evidence": "作者自述加自备界面截图（作者与产品相关）",
+          "urls": [
+            "https://x.com/leerob/status/2124522043274351096"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-25",
       "title": "不会编程，先做出一个「今晚吃啥」小工具",
