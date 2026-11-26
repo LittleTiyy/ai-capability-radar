@@ -87,6 +87,26 @@
     if (split) split.replaceWith(...split.childNodes);
     return { html: box.innerHTML.trim(), figure };
   }
+  function leadParts(html) {
+    const box = document.createElement('div');
+    box.innerHTML = html || '';
+    const step = box.querySelector('.lead-step');
+    if (step) {
+      const stepHtml = step.outerHTML;
+      step.remove();
+      const followEl = box.querySelector('.lead-follow');
+      let follow = '';
+      if (followEl) {
+        follow = followEl.innerHTML.trim();
+        followEl.remove();
+      }
+      const leftover = box.innerHTML.trim();
+      if (leftover) follow = leftover + follow;
+      return { hook: stepHtml, follow };
+    }
+    const body = (html || '').trim();
+    return { hook: body ? `<div class="lead-copy">${body}</div>` : '', follow: '' };
+  }
   function storyHTML(story, isLead, proof) {
     const meta = storyMeta(story);
     const alreadyHasTrial = /class="try-it"/.test(story.bodyHtml || '');
@@ -95,12 +115,12 @@
       const proofFig = proof ? `<figure class="proof"><div class="proof-values"><div><strong>${esc(proof[0])}</strong><small>${esc(proof[1])}</small></div><i aria-hidden="true"></i><div class="last"><strong>${esc(proof[2])}</strong><small>${esc(proof[3])}</small></div></div><figcaption>${esc(proof[4])}</figcaption></figure>` : '';
       let { html: body, figure } = takeFigure(story.bodyHtml || '');
       if (!figure) figure = proofFig;
-      if (body.includes('lead-follow')) body = injectTrial(body, trialHtml);
-      else body = `<div class="lead-copy">${body}</div>` + trialHtml;
+      const parts = leadParts(body);
+      const followInner = `${parts.follow}${trialHtml}${meta}`;
+      const follow = followInner ? `<div class="lead-follow">${followInner}</div>` : '';
       const dek = story.dek ? `<p class="dek">${esc(story.dek)}</p>` : '';
-      const main = `<div class="lead-main"><h2 id="lead-title">${esc(story.title)}</h2>${dek}${body}${meta}</div>`;
       const cardClass = figure ? 'lead-card lead-card--split' : 'lead-card';
-      return `<article class="lead" id="${esc(story.id)}"><div class="${cardClass}">${main}${figure}</div></article>`;
+      return `<article class="lead" id="${esc(story.id)}"><div class="${cardClass}"><h2 id="lead-title">${esc(story.title)}</h2>${dek}${parts.hook}${figure}${follow}</div></article>`;
     }
     return `<li><article class="story" id="${esc(story.id)}"><h3>${esc(story.title)}</h3><div class="teaser">${story.bodyHtml || ''}</div>${trialHtml}${meta}</article></li>`;
   }
@@ -119,7 +139,6 @@
     document.title = `AI玩法日报｜${data.date}`;
     month = new Date(data.date.slice(0, 7) + '-01T00:00:00Z');
     renderCalendar();
-    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(syncIssueNav);
   }
   function renderCalendar() {
     const y = month.getUTCFullYear(), m = month.getUTCMonth();
@@ -260,17 +279,5 @@
   $('previous-page').addEventListener('click', () => {archivePage--;renderArchive(archiveCategory());$('archive-title').focus();});
   $('next-page').addEventListener('click', () => {archivePage++;renderArchive(archiveCategory());$('archive-title').focus();});
   window.addEventListener('hashchange', () => route(true));
-  function syncIssueNav() {
-    const nav = $('issue-nav');
-    const brand = document.querySelector('.masthead');
-    if (!nav || !brand) return;
-    const desktop = window.matchMedia('(min-width: 768px)').matches;
-    nav.style.marginTop = desktop ? `-${brand.offsetHeight}px` : '';
-    const brandBottom = brand.getBoundingClientRect().bottom;
-    nav.classList.toggle('is-stuck', brandBottom <= 1);
-  }
-  window.addEventListener('scroll', syncIssueNav, { passive: true });
-  window.addEventListener('resize', syncIssueNav);
-  renderCalendar(); route(false).then(() => requestAnimationFrame(syncIssueNav));
-  requestAnimationFrame(syncIssueNav);
+  renderCalendar(); route(false);
 })();
