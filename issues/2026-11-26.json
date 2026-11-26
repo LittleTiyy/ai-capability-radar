@@ -1,7 +1,7 @@
 {
   "date": "2026-11-26",
-  "version": "20261126-formal-6",
-  "updated": "2026-11-26T11:49:19+08:00",
+  "version": "20261126-formal-7",
+  "updated": "2026-11-26T14:32:01+08:00",
   "title": "让 Grok Bot 帮你找演出门票，下单前由你确认",
   "intro": "",
   "stories": [
@@ -14,7 +14,7 @@
       "urls": [
         "https://x.com/TonyChanBuilds/status/2124187182130745540"
       ],
-      "bodyHtml": "<div class=\"lead-split\"><p class=\"lead-step\">有人用 Grok Bot 给孩子找演出门票。助手先查看日历，发现当天已有安排，就按他的指示改期。他又要求先看到最终结账信息再买，助手答应在他确认前不会下单。</p><figure class=\"lead-flow\"><img alt=\"示意图：查看日历、按指示改期，承诺确认前不下单。\" height=\"300\" src=\"assets/20261126-001-flow.svg\" width=\"360\"><figcaption>示意图：查看日历、按指示改期，承诺确认前不下单。</figcaption></figure><div class=\"lead-follow\"><p class=\"lead-next\">聊天记录里能看到助手答应等确认，结账页和出票状态待核。</p></div></div>",
+      "bodyHtml": "<div class=\"lead-split\"><p class=\"lead-step\">有人用 Grok Bot 给孩子找演出门票。助手先查看日历，发现当天已有安排，就按他的指示改期。他又要求先看到最终结账信息再买，助手答应在他确认前不会下单。</p><figure class=\"sample-flow\"><p class=\"flow-title\">订票分三步</p><ol><li>查日历</li><li>按指示改期</li><li>承诺确认前不下单</li></ol><figcaption>流程示意。结账页与出票状态待核。</figcaption></figure><div class=\"lead-follow\"><p class=\"lead-next\">聊天记录里能看到助手答应等确认，结账页和出票状态待核。</p></div></div>",
       "summary": "助手先查看日历，遇到冲突按指示改期，并答应确认前不下单。结账页和出票状态待核。",
       "trialAction": "让助手列两个不撞日程的场次",
       "trialHtml": "<blockquote>帮我找两个不撞日程的场次，把日期、总价和退改条件发给我，等我确认再下单。</blockquote><p>待执行。不要为此新连接日历、邮箱、支付或票务账户，也不要下单或付款。</p>"
