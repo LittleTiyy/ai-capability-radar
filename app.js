@@ -120,7 +120,7 @@
       const follow = followInner ? `<div class="lead-follow">${followInner}</div>` : '';
       const dek = story.dek ? `<p class="dek">${esc(story.dek)}</p>` : '';
       const cardClass = figure ? 'lead-card lead-card--split' : 'lead-card';
-      return `<article class="lead" id="${esc(story.id)}"><div class="${cardClass}"><h2 id="lead-title">${esc(story.title)}</h2>${dek}${parts.hook}${figure}${follow}</div></article>`;
+      return `<article class="lead" id="${esc(story.id)}"><div class="${cardClass}"><div class="lead-main"><h2 id="lead-title">${esc(story.title)}</h2>${dek}${parts.hook}${follow}</div>${figure}</div></article>`;
     }
     return `<li><article class="story" id="${esc(story.id)}"><h3>${esc(story.title)}</h3><div class="teaser">${story.bodyHtml || ''}</div>${trialHtml}${meta}</article></li>`;
   }

@@ -476,7 +476,11 @@ html{scroll-padding-top:0}
     column-gap:clamp(20px,3vw,42px);
     row-gap:0;
   }
-  .lead-card--split > :not(figure){grid-column:1}
+  .lead-card--split > .lead-main{
+    grid-column:1;
+    grid-row:1;
+    min-width:0;
+  }
   .lead-card--split > figure{
     grid-column:2;
     grid-row:1;
@@ -534,8 +538,14 @@ html{scroll-padding-top:0}
   .lead-card{padding:19px}
   .lead h2{font-size:clamp(28px,8vw,42px);line-height:1.13;border:0;padding:0}
   .lead-card--split{display:flex;flex-direction:column;gap:0}
-  .lead-card--split > figure{margin:12px 0 8px;width:100%;max-width:100%;order:unset}
+  .lead-card--split > .lead-main{display:contents}
+  .lead-card--split > .lead-main h2{order:1}
+  .lead-card--split > .lead-main .dek{order:2}
+  .lead-card--split > .lead-main .lead-step,
+  .lead-card--split > .lead-main .lead-copy{order:3}
+  .lead-card--split > figure{order:4;margin:12px 0 8px;width:100%;max-width:100%}
   .lead-card--split > .sample-flow{margin:12px 0 8px;padding:15px 18px}
+  .lead-card--split > .lead-main .lead-follow{order:5}
   .briefs-panel{margin-top:24px;padding:14px}
   #issue-items{grid-template-columns:1fr;gap:12px}
   #issue-items .story{padding:15px}
