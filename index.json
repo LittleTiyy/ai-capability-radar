@@ -1,9 +1,153 @@
 {
   "schemaVersion": 1,
-  "latest": "2026-11-26",
-  "updated": "2026-11-26T14:32:01+08:00",
+  "latest": "2026-11-27",
+  "updated": "2026-11-27T09:20:00+08:00",
   "pageSize": 10,
   "issues": [
+    {
+      "date": "2026-11-27",
+      "title": "12 月起，ChatGPT 和 Codex 将共用一份用量",
+      "version": "20261127-formal-1",
+      "updated": "2026-11-27T09:20:00+08:00",
+      "file": "issues/2026-11-27.json",
+      "stories": [
+        {
+          "id": "SIG-20261127-001",
+          "title": "12 月起，ChatGPT 和 Codex 将共用一份用量",
+          "category": "应用与竞品",
+          "evidence": "官方帮助中心说明，不是登录后的额度界面，也不是实测",
+          "urls": [
+            "https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits"
+          ]
+        },
+        {
+          "id": "SIG-20261127-002",
+          "title": "Grok Bot 能做缺货提醒、在 Slack 里协作，也能密送邮件",
+          "category": "应用与竞品",
+          "evidence": "官方 Changelog 声明，不是逐项点开实测",
+          "urls": [
+            "https://x.ai/changelog/bot"
+          ]
+        },
+        {
+          "id": "SIG-20261127-003",
+          "title": "常用的 Claude 小工具可以装成电脑上的独立应用",
+          "category": "应用与竞品",
+          "evidence": "官方说明文，测试版，不是安装实测",
+          "urls": [
+            "https://claude.com/resources/articles/install-as-app"
+          ]
+        },
+        {
+          "id": "SIG-20261127-004",
+          "title": "千问办公可以直接引进飞书和钉钉里的文件",
+          "category": "应用与竞品",
+          "evidence": "官方客户端更新日志声明，不是实测",
+          "urls": [
+            "https://docs.qwenwork.cn/release-notes/desktop"
+          ]
+        },
+        {
+          "id": "SIG-20261127-005",
+          "title": "用 ChatGPT 出草图，再自己用 Keynote 临摹成投稿图",
+          "category": "Agent 与玩法",
+          "evidence": "社区教程／作者自述，不是期刊认可或本刊实测",
+          "urls": [
+            "https://sspai.com/post/119563"
+          ]
+        },
+        {
+          "id": "SIG-20261127-006",
+          "title": "Claude 做好的文件可以直接存进已连接的网盘",
+          "category": "应用与竞品",
+          "evidence": "官方帮助中心，测试版，不是实测",
+          "urls": [
+            "https://support.claude.com/en/articles/18534325-send-files-to-connected-apps-and-save-files-from-them"
+          ]
+        },
+        {
+          "id": "SIG-20261127-007",
+          "title": "订阅很多又怕漏看时，先让助手判断值不值得读",
+          "category": "Agent 与玩法",
+          "evidence": "开发者自荐／作者自述，文首有利益相关声明，不是独立评测",
+          "urls": [
+            "https://sspai.com/post/119584"
+          ]
+        },
+        {
+          "id": "SIG-20261127-008",
+          "title": "先写清分镜，再生成 30 秒音画视频",
+          "category": "Agent 与玩法",
+          "evidence": "社区教程／作者自述，价格为作者转述，不是官方价目核对或出片对照",
+          "urls": [
+            "https://sspai.com/post/119589"
+          ]
+        },
+        {
+          "id": "SIG-20261127-009",
+          "title": "MCP 服务器可以附带工作说明，也能在中途向你提问",
+          "category": "应用与竞品",
+          "evidence": "官方说明文，不是接入实测",
+          "urls": [
+            "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more"
+          ]
+        },
+        {
+          "id": "SIG-20261127-010",
+          "title": "阿里云百炼上架了专门做「是／否／打分」的决策模型",
+          "category": "模型",
+          "evidence": "官方模型上架记录中的产品说明，不是调用实测",
+          "urls": [
+            "https://help.aliyun.com/zh/model-studio/newly-released-models"
+          ]
+        },
+        {
+          "id": "SIG-20261127-011",
+          "title": "智谱 GLM-5.4 已对编程套餐用户开放，API 还要再等",
+          "category": "模型",
+          "evidence": "官方新闻／官宣，不是实测；效果数字为官方自述",
+          "urls": [
+            "https://www.zhipuai.cn/zh/news/164"
+          ]
+        },
+        {
+          "id": "SIG-20261127-012",
+          "title": "Kimi 发布游戏和创意方案，官方称可先做出可试玩原型",
+          "category": "应用与竞品",
+          "evidence": "官方资讯／官宣方案，不是实测",
+          "urls": [
+            "https://www.kimi.com/news/kimi-game-solutions"
+          ]
+        },
+        {
+          "id": "SIG-20261127-013",
+          "title": "MiniMax 把短视频和广告需求拆成一套可选用的 H3 模型",
+          "category": "模型",
+          "evidence": "官方研究博客，数字为官方自述，不是独立统计",
+          "urls": [
+            "https://www.minimax.cn/blog/minimax-h3-family"
+          ]
+        },
+        {
+          "id": "SIG-20261127-014",
+          "title": "科研人员可以申请一笔 Kimi API 额度，首期截止 12 月 8 日",
+          "category": "项目交付",
+          "evidence": "官方计划说明，不是已获批结果或到账证明",
+          "urls": [
+            "https://www.kimi.com/news/kimi-for-science-program"
+          ]
+        },
+        {
+          "id": "SIG-20261127-015",
+          "title": "质谱图可以交给 Antigravity 里的插件去对分子结构",
+          "category": "项目交付",
+          "evidence": "官方博客及官方评测数字，不是本刊安装或鉴定实测",
+          "urls": [
+            "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-26",
       "title": "让 Grok Bot 帮你找演出门票，下单前由你确认",
