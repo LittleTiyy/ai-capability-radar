@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" width="360" height="300" role="img" aria-labelledby="title desc">
+  <title id="title">示意图：查看日历、按指示改期，承诺确认前不下单</title>
+  <desc id="desc">只画出材料支持的三个步骤。本刊未见结账页，也未见出票凭证。</desc>
+  <rect width="360" height="300" fill="#ffdc68"/>
+  <text x="180" y="28" text-anchor="middle" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#4d3521">示意图</text>
+
+  <rect x="28" y="44" width="304" height="56" fill="#fff" stroke="#242019" stroke-width="1.5"/>
+  <text x="180" y="79" text-anchor="middle" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#242019">查看日历</text>
+
+  <line x1="180" y1="100" x2="180" y2="122" stroke="#242019" stroke-width="2"/>
+  <polygon points="180,128 173,114 187,114" fill="#242019"/>
+
+  <rect x="28" y="128" width="304" height="56" fill="#fff" stroke="#242019" stroke-width="1.5"/>
+  <text x="180" y="163" text-anchor="middle" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#242019">按指示改期</text>
+
+  <line x1="180" y1="184" x2="180" y2="206" stroke="#242019" stroke-width="2"/>
+  <polygon points="180,212 173,198 187,198" fill="#242019"/>
+
+  <rect x="28" y="212" width="304" height="62" fill="#fff" stroke="#aa251e" stroke-width="2.5"/>
+  <text x="180" y="250" text-anchor="middle" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#242019">承诺确认前不下单</text>
+</svg>
