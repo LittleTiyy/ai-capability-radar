@@ -30,7 +30,17 @@
       "不要把这次补偿，和 11 月 27 日已经说过的「12 月起 ChatGPT 与 Codex 共用额度」当成同一次调整。两件叠在一起后，同时重度使用这两样的人，可能会觉得更紧。"
     ],
     "image": "",
-    "alt": ""
+    "alt": "",
+    "links": [
+      {
+        "name": "Thibault Sottiaux · 11 月 26 日原帖",
+        "url": "https://x.com/thsottiaux/status/2125784147889393806"
+      },
+      {
+        "name": "OpenAI 帮助中心 · 重置规则",
+        "url": "https://help.openai.com/en/articles/20001498-how-resets-work-in-codex"
+      }
+    ]
   },
   "articles": {
     "magic": [],
@@ -39,7 +49,7 @@
         "title": "给本地 Inkling 2 Mini 加速：已有公开步骤、补丁说明和验收门",
         "summary": "Inkling 2 Mini 不只是进入 Arena 榜，已有人在消费级 AMD 卡上公开了加速步骤、补丁说明和验收门；所有速度数字都是作者自测，不能当成自己机器上的结果。",
         "content": "读完这条，可以更新一个判断：Inkling 2 Mini 不只是出现在 Arena 榜上，已经有人在消费级 AMD 显卡上公开了加速步骤、补丁说明和验收门。博文和配图里的速度数字，都是作者自己测的，不能写成你机器上的结果，也不能外推到其他型号，或普通聊天用户的「一键安装」。文中硬件门槛较高，对应的是 RX 7900 XT 或 R9700 一类。\n\n这些材料是作者的公开实践记录、自测图，以及作者声称已公开的补丁，不是本刊下载、编译、运行补丁或做过的独立基准测试。采集侧关于该模型进入 Arena 榜的记录只作背景，不把榜单位次写成能力结论。推荐了解，不等于授权下载或运行这些补丁。",
-        "fortune": "宜：先看自己的显卡是不是文里那一类，再谈「变快」。忌：把作者自测数字写成你机器上的成绩。",
+        "fortune": "宜：先看自己的显卡是不是文里那一类，再谈「变快」。",
         "links": [
           {
             "name": "Travers Annan 加速实践博文",
@@ -55,7 +65,7 @@
         "title": "测试全绿并不等于算法没被改掉",
         "summary": "正在用模型自动改代码、并主要靠单元测试验收的人，可以先记住「测试全绿仍要看 diff」；「Neon 每次都改算法」只有单一作者自述，不能写成已证实的产品缺陷。",
         "content": "有作者在 2026 年 11 月 22 日说，用模型自动改代码时，测试已经全绿，算法却被换掉了。对主要靠单元测试验收的人，这条提醒仍然清楚：测试全绿之后，最好再看一眼 diff。\n\n「Neon 每次都改算法」、以及文中提到的费用数字，都只是单一作者的第一手陈述，并附了作者提供的短视频。互动很低，没有独立复现，也没有公开可核的仓库或测试夹具，不能写成已经证实的产品缺陷，也不能写成今天新出现的问题。材料尚少，故放在「先观察」。",
-        "fortune": "宜：测试全绿之后，再看一眼 diff。忌：把一条低互动自述写成「Neon 的通病」。",
+        "fortune": "忌：把一条低互动自述写成「Neon 的通病」。",
         "links": [
           {
             "name": "作者原帖",
@@ -69,7 +79,7 @@
         "title": "CineCode：用编码助手在本地用代码生成短片并导出 MP4",
         "summary": "已经在用 Claude Code 或 Cursor、又想在本地出短片而不按次买视频额度的人，可以先读仓库说明和钩子规则，再决定要不要在自己的环境里试；不能写成已经好用或安全。",
         "content": "CineCode 声称可以用编码助手在本地用代码生成短片并导出 MP4，也不必另付视频额度。已经在用 Claude Code 或 Cursor 的人，若想走这条路，应先读仓库 README 和钩子说明，再决定要不要在自己的环境里试。仓库里的能力、样片和「不必付视频额度」，都是作者和仓库的自述；样片未经本刊观看或鉴证，不能写成已经好用或安全。\n\n安装前要看清楚：它配置了会在发提示、停止和任意工具调用前尝试执行本机脚本的钩子。如果选用 Gemini 或 ElevenLabs 的密钥，文本或语音会交给相应服务；免费配额和是否另计费都还没核对。仓库创建于 2026 年 11 月 3 日，最近一次推送是 11 月 12 日，按窗口内社区传播补报，不是今天新发布。它和同期另一条「按分镜文件出讲解视频」的 z-motion-video 不是同一个项目。推荐了解，不等于授权安装或运行这个技能。",
-        "fortune": "宜：先读它会在什么时候尝试执行本机脚本。忌：把「不必付视频额度」写成已经核实的计费事实。",
+        "fortune": "宜：先读它会在什么时候尝试执行本机脚本。",
         "links": [
           {
             "name": "GitHub 仓库",
@@ -85,7 +95,7 @@
         "title": "Page Agent Lite：在侧栏说明要做的事，由插件在当前网页上读取、填表和点击",
         "summary": "想少在网页和聊天框之间来回复制的人，可以了解这条玩法；但效果只有作者自测，网页内容会发到自备接口，不能写成已经好用或安全。",
         "content": "Page Agent Lite 的用法是：在侧栏说明要做的事，由插件在当前网页上读取、填表和点击。想少在网页和聊天框之间来回复制的人，可以先读仓库再决定要不要试。仓库可读，公开记录的许可证是 MIT。这不是安装或操作网页的实测。\n\n作者所说的练习题得分等自测，不得写成效果保证，也不应拿去应付正式考试。当前页里的内容会发到你自己配置的接口，不要把账号、验证码或他人作业交给它。推荐了解，不等于授权安装或填写 API Key。",
-        "fortune": "宜：先把它当成会把当前页发给自备接口的助手。忌：把账号、验证码或他人作业交给它。",
+        "fortune": "忌：把账号、验证码或他人作业交给它。",
         "links": [
           {
             "name": "V2EX 自荐帖",
@@ -101,7 +111,7 @@
         "title": "z-motion-video：按固定分镜文件把讲稿做成讲解视频，并可一次导出三种画幅",
         "summary": "经常要把讲稿做成讲解短视频、并且已经会装 Agent Skill 的人，可以先读仓库，再决定是否在隔离环境里试；配音如何计费文中未写清，不能写成已经能稳定出片。",
         "content": "z-motion-video 声称可以按固定分镜文件，把讲稿做成讲解视频，并一次导出三种画幅。经常要做这类短视频、并且已经会装 Agent Skill 的人，可以先读仓库，再决定是否在隔离环境里试。仓库可读，公开记录的许可证是 MIT。示范视频未经本刊观看，也没有实际执行安装命令，15 套风格和三种画幅是否都能导出，都还没有复核。\n\n安装命令会从远程拉取技能，具体文件内容未核。文中也没有写清配音如何计费。它和精选里的 CineCode 不是同一个项目，材料更薄，故放在速览里简写。推荐了解，不等于授权安装或运行。",
-        "fortune": "宜：先分清它和 CineCode 不是同一个项目。忌：把还没看过的示范视频写成已经能稳定出片。",
+        "fortune": "宜：先分清它和 CineCode 不是同一个项目。",
         "links": [
           {
             "name": "人人都是产品经理 教程",
@@ -119,7 +129,7 @@
         "title": "无机翻译：用自己的模型接口做网页双语对照，不订翻译会员",
         "summary": "经常看英文网页、又不想订翻译会员的人，可以了解用自己的模型接口做双语对照和划词翻译这条路；作者所说费用和「请求不经其中转」都还只是自述。",
         "content": "无机翻译想解决的是：经常看英文网页，又不想另订翻译会员。作者称可以用自己的模型接口做双语对照和划词翻译。仓库页可读，公开记录的许可证是 GPL-3.0。这不是安装、翻译或费用实测，各浏览器商店的详情页也还没有打开。\n\n作者所说「每 100 万 Token 约 1.07 元」，以及「请求不经其中转」，都还只是自述，不能写成官方价或普遍成本，也不能写成已经核实的数据路径。页面正文会发往你配置的接口。若要试，应先读仓库，再决定是否用自己的 Key 试一段非敏感页面。推荐了解，不等于授权安装或填写 API Key。",
-        "fortune": "宜：先读仓库，再用自己的 Key 试一段非敏感页面。忌：把作者报价写成官方价，或把请求路径写成已经核实。",
+        "fortune": "宜：先读仓库，再用自己的 Key 试一段非敏感页面。",
         "links": [
           {
             "name": "V2EX 自荐帖",
@@ -135,7 +145,7 @@
         "title": "拾页：把未读标签和网页正文记在自己的浏览器里",
         "summary": "常被未读标签困扰、又不想把浏览记录传到别人服务器的人，可以先看这个把链接和网页正文留在本机、关掉后按关键词找回的扩展；不要把它写成 AI 搜索或 AI 功能。",
         "content": "拾页（Shiye）是一个浏览器扩展：把链接和网页正文留在自己的浏览器里，关掉后还可以按关键词找回。常被未读标签困扰、又不想把浏览记录传到别人服务器的人，可以先看官网和作者说明。这不是 AI 搜索，也不是 AI 功能。\n\nV2EX 帖和官网首页可读。作者给出的 GitHub 地址本次为 404，不能把「已开源可查」写成已经核对。Chrome 网上应用店详情和扩展权限（尤其是全站自动保存）也还待核；「不上传」目前只是作者自述。推荐了解，不等于授权安装。",
-        "fortune": "宜：记住这不是 AI 功能，只是把链接和正文留在本机。忌：在源码地址还核不到时，写成已经开源可查。",
+        "fortune": "忌：在源码地址还核不到时，写成已经开源可查。",
         "links": [
           {
             "name": "V2EX 自荐帖",
@@ -153,7 +163,7 @@
         "title": "google-trends-for-agent：让助手把 Trends 相对指数估成近似日搜索量",
         "summary": "已经在用编程助手做选题的人，可以知道有工具声称能把 Google Trends 的 0–100 相对指数按公开锚点估成近似日搜索量，并接进命令行或 MCP；估数是否准确未经核对，普通读者不必优先。",
         "content": "有开发者做了 google-trends-for-agent，声称能把 Google Trends 上的 0–100 相对指数，按公开锚点估成近似日搜索量，并接到命令行或 MCP。已经在用编程助手做选题的人，可以先知道有这么一条路。仓库和项目页可读，公开记录的许可证是 MIT。这不是运行命令或对搜索量的实测。\n\n作者举例的日搜索量数字，不得直接写进对外材料。估数准不准还没有核对，普通读者不必优先去试。本机直连是否始终免费，以及触发限流后走公共 Actor 或 Apify 的费用和数据路径，都还待核。推荐了解，不等于授权执行安装命令或注册付费服务。",
-        "fortune": "宜：把它当成「有人在估日搜索量」的线索。忌：把作者举例的数字直接写进对外材料。",
+        "fortune": "忌：把作者举例的数字直接写进对外材料。",
         "links": [
           {
             "name": "V2EX 自荐帖",
@@ -287,6 +297,11 @@
   }
   .modal-close:hover { background: var(--neo-pink); }
   .fortune-result { margin: 16px 0; padding: 16px; border-radius: 8px; background: var(--neo-mint); text-align: left; font-weight: 700; }
+  .fortune-result p { margin: 0; }
+  .fortune-result p + p { margin-top: 10px; }
+  .fortune-label { font-weight: 900; margin-right: .35em; }
+  .fortune-label.good { color: #135c35; }
+  .fortune-label.caution { color: #952846; }
   .modal-box h2 { margin: 0 24px 20px; }
   .modal-box .brutal-btn { width: 100%; justify-content: center; }
 
@@ -304,7 +319,7 @@
   .lot-icon { width: 36px; height: 36px; vertical-align: middle; transform-origin: 50% 85%; }
   .modal-box .lot-icon { width: 1.15em; height: 1.15em; }
   @media (prefers-reduced-motion: no-preference) {
-    .lot-btn:hover .lot-icon, .modal-box .lot-icon:hover { animation: shake-lots .48s ease-in-out infinite; }
+    .lot-btn:hover .lot-icon, .modal-box .lot-icon:hover, .is-drawing .lot-icon { animation: shake-lots .48s ease-in-out infinite; }
     @keyframes shake-lots { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-9deg); } 75% { transform: rotate(9deg); } }
   }
   
@@ -614,6 +629,10 @@
     }
     col.querySelector('.headline-summary').textContent = head.summary;
     head.paragraphs.forEach(p => appendText(col, 'p', p));
+    const sources = document.createElement('div');
+    sources.className = 'detail-links';
+    col.appendChild(sources);
+    renderSources(sources, head.links);
     const img = document.querySelector('.img-col img');
     if (head.image) {
       img.alt = head.alt;
@@ -783,9 +802,12 @@
     document.getElementById('dt-summary').textContent = article.summary;
     document.getElementById('dt-body').textContent = article.content;
     
-    const linksDiv = document.getElementById('dt-links');
+    renderSources(document.getElementById('dt-links'), article.links);
+  }
+
+  function renderSources(linksDiv, links) {
     linksDiv.innerHTML = '<span>🔗 来源参考：</span>';
-    const sources = (article.links || []).filter(link => /^https?:\/\//i.test(link.url));
+    const sources = (links || []).filter(link => /^https?:\/\//i.test(link.url));
     linksDiv.style.display = sources.length ? '' : 'none';
     sources.forEach(link => {
       const a = document.createElement('a');
@@ -826,6 +848,21 @@
   });
 
   /* --- 抽签盲盒逻辑 --- */
+  function renderFortune(value) {
+    fRes.replaceChildren();
+    const lines = value.split(/\n|(?=【[宜忌]】|(?<!【)[宜忌][：:])/u);
+    for (const line of lines.map(text => text.trim()).filter(Boolean)) {
+      const row = document.createElement('p');
+      const tag = line.match(/^【?([宜忌])(?:】[：:]?|[：:])\s*/u);
+      if (tag) {
+        appendText(row, 'span', '【' + tag[1] + '】').className =
+          'fortune-label ' + (tag[1] === '宜' ? 'good' : 'caution');
+      }
+      row.append(line.slice(tag ? tag[0].length : 0));
+      fRes.append(row);
+    }
+  }
+
   function openModal() {
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden'; // 防止背景滚动
@@ -841,6 +878,7 @@
   let drawTimer;
   function closeModal() {
     clearTimeout(drawTimer);
+    modal.classList.remove('is-drawing');
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
   }
@@ -864,14 +902,16 @@
   btnDraw.addEventListener('click', () => {
     btnDraw.disabled = true;
     btnDraw.textContent = '摇签中…';
+    modal.classList.add('is-drawing');
     drawTimer = setTimeout(() => {
       currentDrawnFortune = fortunesList[Math.floor(Math.random() * fortunesList.length)];
-      fRes.textContent = currentDrawnFortune.text;
+      modal.classList.remove('is-drawing');
+      renderFortune(currentDrawnFortune.text);
       fRes.style.display = 'block';
       btnDraw.style.display = 'none';
       btnDecode.style.display = 'inline-flex';
       try { sessionStorage.setItem('ai-daily:' + issue.date, 'true'); } catch {}
-    }, 550);
+    }, 900);
   });
 
   // 解签：关闭弹窗 -> 滚动到速览 -> 切换到详情视图 -> 激活对应的 Tab

@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 玩法日报｜Neo-Brutalism</title>
+<!-- 每期内容开始：网页编辑只填写下方 JSON -->
+<script type="application/json" id="issue-data">
+{
+  "date": "{{YYYY-MM-DD}}",
+  "headline": {
+    "kicker": "{{头条引题}}",
+    "title": "{{头条标题}}",
+    "summary": "{{头条摘要}}",
+    "paragraphs": [
+      "{{第一段正文}}",
+      "{{第二段正文}}"
+    ],
+    "image": "{{头条图片地址}}",
+    "alt": "{{图片说明}}",
+    "links": [
+      {
+        "name": "{{头条来源名称}}",
+        "url": "{{头条原文网址}}"
+      }
+    ]
+  },
+  "articles": {
+    "magic": [],
+    "forge": [
+      {
+        "title": "{{文章标题}}",
+        "summary": "{{一句话摘要}}",
+        "content": "{{正文第一段}}\n\n{{正文第二段}}",
+        "fortune": "{{与本文有关的一句签文}}",
+        "links": [
+          {
+            "name": "{{来源名称}}",
+            "url": "{{原文网址}}"
+          }
+        ]
+      }
+    ],
+    "cyber": [],
+    "armory": [],
+    "workshop": []
+  },
+  "editor": {
+    "paragraphs": [
+      "{{RadarChief 的主编寄语}}"
+    ],
+    "signature": "RadarChief"
+  }
+}
+</script>
+<!-- 每期内容结束 -->
+<style>
+  :root {
+    --bg-color: #f4ece8;
+    --border-color: #111;
+    --border-width: 3px;
+    --neo-shadow: 5px 5px 0 var(--border-color);
+    --neo-shadow-hover: 2px 2px 0 var(--border-color);
+    
+    /* 糖果高饱和度配色 */
+    --neo-pink: #FFB5E8;
+    --neo-purple: #B28DFF;
+    --neo-yellow: #fff33b;
+    --neo-mint: #a8f5cc;
+    --neo-blue: #a4def5;
+    --neo-orange: #ffc996;
+    --neo-gray: #e0e0e0;
+
+    --font-sans: "PingFang SC", "Microsoft YaHei", -apple-system, system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0; padding: 0;
+    background-color: var(--bg-color);
+    color: var(--border-color);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    background-image: radial-gradient(rgba(17,17,17,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-attachment: fixed;
+    padding-left: 90px; /* 为左侧导航留出空间 */
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 24px; }
+
+  /* --- 基础粗野主义组件 --- */
+  .brutal-card {
+    background: #fff;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--neo-shadow);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .brutal-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--neo-yellow); color: var(--border-color);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 3px 3px 0 var(--border-color);
+    border-radius: 8px; padding: 8px 16px;
+    font-size: 15px; font-weight: 800; cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    text-decoration: none;
+  }
+  .brutal-btn:hover { background: #ffe600; transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--border-color); }
+  .brutal-btn:active { box-shadow: 0px 0px 0 var(--border-color); transform: translate(3px, 3px); }
+
+  h1, h2, h3, h4 { margin: 0 0 12px 0; font-weight: 900; }
+  p { margin: 0 0 12px 0; }
+  
+  /* 荧光笔半高亮效果 */
+  mark.hl {
+    background: linear-gradient(transparent 55%, rgba(170, 37, 30, 0.15) 55%);
+    color: var(--border-color);
+    font-weight: 800;
+    padding: 0 4px;
+    border-radius: 2px;
+  }
+  mark.hl.hl-yellow { background: linear-gradient(transparent 50%, var(--neo-yellow) 50%); }
+
+  /* --- 1. 左侧电梯悬浮导航 --- */
+  .floating-nav {
+    position: fixed; left: 24px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 12px; z-index: 100;
+  }
+  .nav-dot {
+    writing-mode: vertical-rl; text-orientation: mixed;
+    padding: 16px 8px; background: #fff; border: 2px solid var(--border-color);
+    border-radius: 8px; text-decoration: none; color: var(--border-color);
+    font-weight: 800; font-size: 14px; box-shadow: 3px 3px 0 var(--border-color);
+    transition: all 0.2s; letter-spacing: 2px; text-align: center;
+  }
+  .nav-dot:hover { background: var(--neo-pink); transform: translateX(-2px); }
+  .nav-dot.active { background: var(--border-color); color: #fff; box-shadow: inset 3px 3px 0 rgba(0,0,0,0.4); transform: translate(2px, 2px); }
+
+  /* --- 5. 抽签盲盒弹窗 --- */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px); z-index: 999;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  .modal-box {
+    width: 100%; max-width: 380px; text-align: center;
+    background: #fff; transform: rotate(-2deg);
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  @keyframes popIn {
+    0% { transform: scale(0.8) rotate(-10deg); opacity: 0; }
+    100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+  }
+  .modal-close {
+    position: absolute; top: 12px; right: 12px;
+    background: #fff; border: 2px solid #111; border-radius: 50%;
+    width: 32px; height: 32px; font-weight: bold; cursor: pointer;
+    box-shadow: 2px 2px 0 #111;
+  }
+  .modal-close:hover { background: var(--neo-pink); }
+  .fortune-result { margin: 16px 0; padding: 16px; border-radius: 8px; background: var(--neo-mint); text-align: left; font-weight: 700; }
+  .fortune-result p { margin: 0; }
+  .fortune-result p + p { margin-top: 10px; }
+  .fortune-label { font-weight: 900; margin-right: .35em; }
+  .fortune-label.good { color: #135c35; }
+  .fortune-label.caution { color: #952846; }
+  .modal-box h2 { margin: 0 24px 20px; }
+  .modal-box .brutal-btn { width: 100%; justify-content: center; }
+
+  /* --- 区块通用设置 --- */
+  section { margin-bottom: 64px; scroll-margin-top: 40px; }
+
+  /* --- 2. 顶部报头 --- */
+  .header-area {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--neo-pink);
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo { font-size: 40px; text-transform: uppercase; text-shadow: 3px 3px 0 #fff; margin: 0; line-height: 1; }
+  .lot-btn { display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .lot-icon { width: 36px; height: 36px; vertical-align: middle; transform-origin: 50% 85%; }
+  .modal-box .lot-icon { width: 1.15em; height: 1.15em; }
+  @media (prefers-reduced-motion: no-preference) {
+    .lot-btn:hover .lot-icon, .modal-box .lot-icon:hover, .is-drawing .lot-icon { animation: shake-lots .48s ease-in-out infinite; }
+    @keyframes shake-lots { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-9deg); } 75% { transform: rotate(9deg); } }
+  }
+  
+  /* 日历选择器 */
+  .issue-calendar { position: relative; font-size: 14px; }
+  .issue-calendar > summary {
+    display: flex; align-items: center; gap: 8px; padding: 8px 16px;
+    background: #fff; border: 2px solid var(--border-color); box-shadow: 3px 3px 0 var(--border-color);
+    border-radius: 6px; font-weight: 800; cursor: pointer; list-style: none;
+  }
+  .issue-calendar > summary::-webkit-details-marker { display: none; }
+  .calendar-panel {
+    position: absolute; right: 0; top: calc(100% + 8px); width: 280px;
+    padding: 16px; background: #fff; border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0 var(--border-color); border-radius: 8px; z-index: 50;
+  }
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; margin-top: 12px;}
+  .calendar-grid span { font-size: 12px; font-weight: bold; color: #666; }
+  .calendar-grid button {
+    border: 2px solid transparent; background: none; cursor: pointer; padding: 6px 0; font-weight:bold; border-radius: 4px;
+  }
+  .calendar-grid button:hover:not(:disabled) { border-color: #111; background: var(--neo-yellow); }
+  .calendar-grid button:disabled { color: #ccc; cursor: default; }
+  .calendar-grid button.active { background: var(--border-color); color: #fff; }
+
+  /* --- 3. 头条双态版式 --- */
+  .headline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .headline-content { transition: all 0.3s ease; }
+  
+  /* 分栏有图模式 */
+  .headline-content.mode-image { display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: start; }
+  .headline-content.mode-image figure {
+    margin: 0; border: var(--border-width) solid var(--border-color);
+    border-radius: 8px; overflow: hidden; box-shadow: 4px 4px 0 var(--border-color);
+  }
+  .headline-content.mode-image img { width: 100%; display: block; object-fit: cover; }
+  
+  /* 居中无图模式 */
+  .headline-content.mode-text { display: block; max-width: 52em; margin: 0 auto; text-align: left; }
+  .headline-content.mode-text figure { display: none; }
+  .headline-kicker { font-size: 18px; color: #666; display: block; margin-bottom: 8px; }
+  .headline-content h3 { font-size: clamp(28px, 4vw, 42px); line-height: 1.2; margin-bottom: 16px; }
+  .headline-summary { font-size: 16px; color: #444; background: #fffbeb; padding: 12px 16px; border: 2px dashed #ad7e32; border-radius: 8px; margin-bottom: 16px; }
+
+  /* --- 4. 全球速览 (双视图切换) --- */
+  /* 便当盒视图 */
+  .bento-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px;
+  }
+  .theme-card {
+    display: flex; flex-direction: column; justify-content: flex-start;
+    padding: 20px; cursor: pointer; transition: transform 0.2s;
+    height: 260px; overflow: hidden;
+  }
+  .theme-card-head h3 { font-size: 22px; margin: 0 0 4px 0; }
+  .theme-card-head p { font-size: 13px; opacity: 0.85; margin: 0 0 16px 0; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 12px; }
+  
+  /* 主题内容预览列表 */
+  .theme-preview-list { list-style: none; padding: 0; margin: 0; flex: 1; }
+  .theme-preview-list li {
+    font-size: 14px; font-weight: 700; padding-left: 16px; position: relative; margin-bottom: 10px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .theme-preview-list li::before {
+    content: "■"; position: absolute; left: 0; top: 0; color: rgba(0,0,0,0.3); font-size: 10px;
+  }
+  .theme-empty { font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.4); text-align: center; margin-top: 30px; font-style: italic; }
+
+  /* 3上 2下 布局排布 */
+  .theme-card:nth-child(1) { grid-column: span 2; background: var(--neo-purple); }
+  .theme-card:nth-child(2) { grid-column: span 2; background: var(--neo-mint); }
+  .theme-card:nth-child(3) { grid-column: span 2; background: var(--neo-yellow); }
+  .theme-card:nth-child(4) { grid-column: 2 / span 2; background: var(--neo-blue); }
+  .theme-card:nth-child(5) { grid-column: 4 / span 2; background: var(--neo-orange); }
+
+  /* 果冻抖动悬停特效 */
+  @keyframes jelly {
+    0% { transform: scale3d(1, 1, 1) rotate(0deg); }
+    30% { transform: scale3d(1.05, 0.95, 1) rotate(-1deg); }
+    40% { transform: scale3d(0.95, 1.05, 1) rotate(1deg); }
+    50% { transform: scale3d(1.02, 0.98, 1) rotate(-1deg); }
+    65% { transform: scale3d(0.98, 1.02, 1) rotate(1deg); }
+    75% { transform: scale3d(1.01, 0.99, 1) rotate(0deg); }
+    100% { transform: scale3d(1, 1, 1) rotate(0deg); }
+  }
+  .theme-card:hover { animation: jelly 0.6s ease; z-index: 10; box-shadow: 8px 8px 0 var(--border-color); }
+
+  /* 按主题阅读 (Master-Detail) */
+  .detail-view { display: none; }
+  .detail-toolbar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-btn {
+    background: #fff; border: 2px solid var(--border-color); padding: 8px 16px;
+    border-radius: 8px; cursor: pointer; font-weight: 800; box-shadow: 3px 3px 0 var(--border-color);
+  }
+  .tab-btn:disabled { color: #777; border-color: #bbb; background: #eee; box-shadow: none; cursor: not-allowed; }
+  .tab-btn.active { background: var(--border-color); color: #fff; transform: translate(3px, 3px); box-shadow: none; }
+  
+  .detail-layout {
+    display: grid; grid-template-columns: 300px 1fr; gap: 0;
+    background: #fff; border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--neo-shadow); border-radius: 12px; overflow: hidden; min-height: 500px;
+  }
+  /* 左侧列表 */
+  .detail-list {
+    border-right: var(--border-width) solid var(--border-color); background: #f9f9f9;
+    padding: 0; margin: 0; list-style: none; overflow-y: auto; max-height: 600px;
+  }
+  .list-item {
+    padding: 16px; border-bottom: 2px solid var(--border-color); cursor: pointer;
+    transition: background 0.1s;
+  }
+  .list-item h5 { font-size: 15px; margin: 0 0 6px 0; font-weight: 800; }
+  .list-item p { font-size: 12px; margin: 0; color: #555; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .list-item:hover { background: var(--neo-yellow); }
+  .list-item.active { background: var(--border-color); color: #fff; }
+  .list-item.active p { color: #ddd; }
+
+  /* 右侧详情内容区 - 充实内容排版 */
+  .detail-content-area { padding: 32px; background: #fff; overflow-y: auto; max-height: 600px;}
+  .content-empty-state { text-align: center; color: #888; margin-top: 100px; font-weight: bold; }
+  .detail-header { margin-bottom: 24px; border-bottom: 4px solid var(--neo-mint); padding-bottom: 16px; }
+  .detail-header h2 { font-size: 26px; line-height: 1.4; margin-bottom: 12px; }
+  .detail-summary { font-size: 16px; color: #444; background: #F8F9FA; padding: 16px; border-radius: 8px; border-left: 4px solid var(--border-color); margin-bottom: 24px; font-weight: bold; }
+  .detail-body { font-size: 15px; line-height: 1.8; color: #222; margin-bottom: 32px; }
+  .detail-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding-top: 16px; border-top: 2px dashed #ddd; }
+  .detail-links span { font-weight: 800; font-size: 14px; }
+  .link-tag { background: #edf2f4; color: #111; padding: 4px 12px; border-radius: 6px; font-weight: 700; text-decoration: none; border: 1px solid #111; font-size: 13px; transition: background 0.1s;}
+  .link-tag:hover { background: var(--neo-pink); }
+
+  /* --- 编辑区 --- */
+  .editor-note { background: #fff; }
+
+  /* --- 响应式 --- */
+  @media (max-width: 900px) {
+    body { padding-left: 0; padding-bottom: 70px; }
+    .floating-nav {
+      top: auto; bottom: 0; left: 0; right: 0; transform: none; flex-direction: row;
+      background: #fff; border-top: 3px solid #111; padding: 12px; justify-content: space-around;
+      box-shadow: 0 -4px 0 rgba(0,0,0,0.1);
+    }
+    .nav-dot { writing-mode: horizontal-tb; padding: 8px 12px; box-shadow: 2px 2px 0 #111; font-size: 12px; }
+    .bento-grid { grid-template-columns: 1fr; }
+    .theme-card { grid-column: span 1 !important; height: auto; min-height: 180px; }
+    .headline-content.mode-image { grid-template-columns: 1fr; }
+    .detail-layout { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+    .detail-list { border-right: none; border-bottom: var(--border-width) solid var(--border-color); max-height: 250px; }
+    .header-area { flex-direction: column; align-items: flex-start; gap: 16px;}
+  }
+  #dt-body { white-space: pre-line; }
+</style>
+</head>
+<body>
+
+<!-- 1. 左侧电梯 -->
+<aside class="floating-nav">
+  <a href="#sec-header" class="nav-dot active">报头</a>
+  <a href="#sec-headline" class="nav-dot">头条</a>
+  <a href="#sec-themes" class="nav-dot">速览</a>
+  <a href="#sec-editor" class="nav-dot">主编</a>
+</aside>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="lot-cup" viewBox="0 0 40 40">
+  <g stroke="#382920" stroke-width="1.7" stroke-linejoin="round">
+    <g fill="#f1c775"><rect x="10" y="5" width="4" height="20" rx="1.2" transform="rotate(-13 12 23)"/><rect x="17" y="2" width="4" height="22" rx="1.2"/><rect x="23" y="6" width="4" height="19" rx="1.2" transform="rotate(14 25 23)"/></g>
+    <path fill="#c25d42" d="M7 16Q20 21 33 16L29 34Q20 39 11 34Z"/><path fill="none" stroke="#ffdc98" d="M10 21Q20 25 30 21M12 31Q20 35 28 31"/>
+  </g></symbol></svg>
+<!-- 5. 抽签盲盒弹窗 -->
+<div id="fortune-modal" class="modal-overlay" style="display: none;">
+  <div class="brutal-card modal-box">
+    <button id="btn-close-modal" class="modal-close" aria-label="关闭">✖</button>
+    <h2><svg class="lot-icon" aria-hidden="true"><use href="#lot-cup"/></svg> 今日 AI 运势</h2>
+    <div id="fortune-res" class="fortune-result" style="display:none" aria-live="polite"></div>
+    <button id="btn-draw" class="brutal-btn">抽取今日签</button>
+    <button id="btn-decode" class="brutal-btn" style="width:100%; background: var(--neo-pink); display: none;">给我解签！</button>
+  </div>
+</div>
+
+<div class="wrap">
+  
+  <!-- 2. 报头区域 -->
+  <section id="sec-header" class="header-area brutal-card">
+    <div class="header-left">
+      <h1 class="logo">AI 玩法日报</h1>
+      <button id="btn-open-lots" class="lot-btn" aria-label="抽取今日签"><svg class="lot-icon" aria-hidden="true"><use href="#lot-cup"/></svg></button>
+    </div>
+    
+    <details class="issue-calendar" id="issue-calendar">
+      <summary>🗓 ▾</summary>
+      <div class="calendar-panel">
+        <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-weight:800;">
+          <button style="border:none;background:none;cursor:pointer;">‹</button>
+          <span></span>
+          <button style="border:none;background:none;cursor:pointer;">›</button>
+        </div>
+        <div class="calendar-grid">
+          <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+        </div>
+        <p style="font-size:12px; color:#666; margin-top:12px; text-align:center;">仅展示当前预览日期</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 3. 头条双态版式 -->
+  <section id="sec-headline">
+    <div class="headline-header">
+      <h2>🔥 今日头条</h2>
+      <button id="toggle-mode-btn" class="brutal-btn" style="background: var(--neo-mint);">切换：无图沉浸版</button>
+    </div>
+    <div class="brutal-card" style="background: #fcf8f1;">
+      <div id="headline-content" class="headline-content mode-image">
+        <div class="text-col">
+          <span class="headline-kicker"></span>
+          <h3></h3>
+          <div class="headline-summary"></div>
+        </div>
+        <figure class="img-col"><img alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 全球速览 -->
+  <section id="sec-themes">
+    <div class="headline-header">
+      <h2>🧩 全球速览</h2>
+      <button id="toggle-view-btn" class="brutal-btn" style="background: #fff;">⟲ 按主题阅读</button>
+    </div>
+    
+    <!-- 默认便当盒视图 (由 JS 渲染填入) -->
+    <div id="bento-view" class="bento-grid"></div>
+
+    <!-- 按主题阅读 Tab -->
+    <div id="detail-view" class="detail-view">
+      <div class="detail-toolbar" id="tab-container"></div>
+      <div class="detail-layout">
+        <!-- 左侧列表 -->
+        <ul id="article-list" class="detail-list"></ul>
+        <!-- 右侧详情 -->
+        <div id="article-detail" class="detail-content-area">
+          <div id="detail-empty" class="content-empty-state">请在左侧选择一篇文章</div>
+          <div id="detail-full" style="display: none;">
+            <div class="detail-header">
+              <h2 id="dt-title">标题</h2>
+            </div>
+            <div id="dt-summary" class="detail-summary">摘要</div>
+            <div id="dt-body" class="detail-body">正文详情</div>
+            <div class="detail-links" id="dt-links">
+              <span>🔗 来源参考：</span>
+              <!-- 链接将由 JS 插入 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 编者按 -->
+  <section id="sec-editor" class="brutal-card editor-note">
+    <h2>🖋️ 主编的话</h2>
+  </section>
+
+</div>
+
+<script>
+  const issue = JSON.parse(document.getElementById('issue-data').textContent);
+  const themesData = {
+    magic: { title: "🧪 魔法实验室", desc: "前沿论文、实验与研究演示", articles: issue.articles.magic },
+    forge: { title: "🔥 炼丹炉前线", desc: "模型动态、能力对比与重置", articles: issue.articles.forge },
+    cyber: { title: "🎪 赛博游乐场", desc: "Agent 与玩法、全球创意项目", articles: issue.articles.cyber },
+    armory: { title: "⚔️ 兵器谱更新", desc: "应用产品更新、价格与体验对比", articles: issue.articles.armory },
+    workshop: { title: "⚙️ 齿轮与车间", desc: "项目部署、工程化与成本控制", articles: issue.articles.workshop },
+  };
+
+  function appendText(parent, tag, value) {
+    const el = document.createElement(tag);
+    el.textContent = value;
+    parent.appendChild(el);
+    return el;
+  }
+
+  function fillIssue() {
+    const date = new Date(issue.date + 'T00:00:00Z');
+    const calendar = document.querySelector('.issue-calendar');
+    calendar.querySelector('summary').textContent = '🗓 ' + issue.date + ' ▾';
+    document.title = 'AI 玩法日报｜' + issue.date;
+    if (Number.isFinite(date.getTime())) {
+      const year = date.getUTCFullYear(), month = date.getUTCMonth();
+      calendar.querySelector('.calendar-panel span').textContent = year + ' 年 ' + (month + 1) + ' 月';
+      const grid = calendar.querySelector('.calendar-grid');
+      const blanks = (new Date(Date.UTC(year, month, 1)).getUTCDay() + 6) % 7;
+      for (let i = 0; i < blanks; i++) grid.appendChild(document.createElement('span'));
+      const days = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+      for (let day = 1; day <= days; day++) {
+        const btn = appendText(grid, 'button', day);
+        btn.disabled = day !== date.getUTCDate();
+        if (!btn.disabled) btn.className = 'active';
+      }
+    }
+    const head = issue.headline;
+    const col = document.querySelector('.text-col');
+    for (const [selector, value] of [['.headline-kicker',head.kicker], ['h3',head.title]]) {
+      const el = col.querySelector(selector);
+      for (const part of value.split(/(《《[^》]+》》)/g)) {
+        if (part.startsWith('《《') && part.endsWith('》》')) {
+          appendText(el, 'mark', part.slice(2,-2)).className = selector === 'h3' ? 'hl' : 'hl hl-yellow';
+        } else el.append(part);
+      }
+    }
+    col.querySelector('.headline-summary').textContent = head.summary;
+    head.paragraphs.forEach(p => appendText(col, 'p', p));
+    const sources = document.createElement('div');
+    sources.className = 'detail-links';
+    col.appendChild(sources);
+    renderSources(sources, head.links);
+    const img = document.querySelector('.img-col img');
+    if (head.image) {
+      img.alt = head.alt;
+      img.src = head.image.startsWith('{{') ? 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450"><rect width="600" height="450" fill="#b28dff"/><text x="300" y="225" text-anchor="middle" font-size="28">头条配图</text></svg>') : head.image;
+    } else {
+      headlineContent.className = 'headline-content mode-text';
+      btnToggleMode.hidden = true;
+      btnToggleMode.style.display = 'none';
+    }
+    const editor = document.getElementById('sec-editor');
+    issue.editor.paragraphs.forEach(p => appendText(editor, 'p', p));
+    if (issue.editor.signature) appendText(editor, 'p', '—— ' + issue.editor.signature);
+  }
+
+  const fortunesList = Object.entries(themesData).flatMap(([theme, data]) =>
+    data.articles.map((article, index) => ({ theme, index, text: article.fortune || article.summary }))
+  );
+
+  /* --- DOM 元素引用 --- */
+  const modal = document.getElementById('fortune-modal');
+  const btnCloseModal = document.getElementById('btn-close-modal');
+  const btnDraw = document.getElementById('btn-draw');
+  const btnDecode = document.getElementById('btn-decode');
+  const fRes = document.getElementById('fortune-res');
+  const btnOpenLots = document.getElementById('btn-open-lots');
+
+  const btnToggleMode = document.getElementById('toggle-mode-btn');
+  const headlineContent = document.getElementById('headline-content');
+  
+  const bentoView = document.getElementById('bento-view');
+  const detailView = document.getElementById('detail-view');
+  const btnToggleView = document.getElementById('toggle-view-btn');
+  
+  const tabContainer = document.getElementById('tab-container');
+  const articleList = document.getElementById('article-list');
+  const detailEmpty = document.getElementById('detail-empty');
+  const detailFull = document.getElementById('detail-full');
+  
+  // 状态
+  let isBentoMode = true;
+  let isImageMode = true;
+  let currentDrawnFortune = null;
+
+  /* --- 初始化渲染便当盒 (Bento View) --- */
+  function renderBentoGrid() {
+    bentoView.innerHTML = '';
+    Object.keys(themesData).forEach(key => {
+      const theme = themesData[key];
+      const card = document.createElement('div');
+      card.className = 'brutal-card theme-card';
+      // Head
+      let html = `<div class="theme-card-head">
+                    <h3>${theme.title}</h3>
+                    <p>${theme.desc}</p>
+                  </div>`;
+      // Preview List
+      html += `<ul class="theme-preview-list">`;
+      if (theme.articles.length > 0) {
+        // 展示前 2 条
+        theme.articles.slice(0, 2).forEach(() => {
+          html += `<li></li>`;
+        });
+      } else {
+        html += `<div class="theme-empty">今日暂无动态</div>`;
+      }
+      html += `</ul>`;
+      
+      card.innerHTML = html;
+      card.querySelectorAll('li').forEach((item, index) => {
+        item.textContent = theme.articles[index].title;
+      });
+      // 点击整个卡片切换到详情
+      if (theme.articles.length) card.addEventListener('click', () => {
+        switchToDetailView(key);
+      });
+      bentoView.appendChild(card);
+    });
+  }
+
+  /* --- 初始化渲染 Tab --- */
+  function initTabs() {
+    tabContainer.innerHTML = '';
+    Object.keys(themesData).forEach(key => {
+      const btn = document.createElement('button');
+      btn.className = 'tab-btn';
+      btn.textContent = themesData[key].title.split(' ')[1]; // 简写 Tab 名
+      btn.disabled = !themesData[key].articles.length;
+      btn.onclick = () => renderDetailLeftList(key);
+      tabContainer.appendChild(btn);
+    });
+  }
+
+  /* --- 视图切换逻辑 --- */
+  function switchToDetailView(themeKeyToActivate, articleIndex = 0) {
+    isBentoMode = false;
+    bentoView.style.display = 'none';
+    detailView.style.display = 'block';
+    btnToggleView.textContent = '⟲ 返回便当盒网格';
+    btnToggleView.style.background = 'var(--neo-pink)';
+    
+    const key = themesData[themeKeyToActivate]?.articles.length ? themeKeyToActivate :
+      Object.keys(themesData).find(key => themesData[key].articles.length);
+    renderDetailLeftList(key, articleIndex);
+    document.getElementById('sec-themes').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function switchToBentoView() {
+    isBentoMode = true;
+    bentoView.style.display = 'grid';
+    detailView.style.display = 'none';
+    btnToggleView.textContent = '⟲ 按主题阅读';
+    btnToggleView.style.background = '#fff';
+  }
+
+  btnToggleView.addEventListener('click', () => {
+    if (isBentoMode) switchToDetailView();
+    else switchToBentoView();
+  });
+
+  /* --- 详情视图：渲染左侧列表 --- */
+  function renderDetailLeftList(themeKey, articleIndex = 0) {
+    // 激活对应 Tab
+    document.querySelectorAll('.tab-btn').forEach((btn, index) => {
+      btn.classList.toggle('active', Object.keys(themesData)[index] === themeKey);
+    });
+
+    articleList.innerHTML = '';
+    const articles = themesData[themeKey]?.articles || [];
+    
+    if (articles.length === 0) {
+      const li = document.createElement('li');
+      li.className = 'list-item';
+      li.innerHTML = `<h5>暂无内容</h5><p>该主题今日没有更新动态。</p>`;
+      articleList.appendChild(li);
+      showRightDetail(null);
+      return;
+    }
+
+    articles.forEach((art, index) => {
+      const li = document.createElement('li');
+      li.className = 'list-item';
+      appendText(li, 'h5', art.title);
+      appendText(li, 'p', art.summary);
+      li.onclick = () => {
+        document.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
+        li.classList.add('active');
+        showRightDetail(art);
+      };
+      articleList.appendChild(li);
+    });
+    
+    // 默认点第一条
+    articleList.children[articleIndex].click();
+  }
+
+  /* --- 详情视图：渲染右侧内容 --- */
+  function showRightDetail(article) {
+    if (!article) {
+      detailEmpty.style.display = 'block';
+      detailFull.style.display = 'none';
+      return;
+    }
+    detailEmpty.style.display = 'none';
+    detailFull.style.display = 'block';
+    
+    document.getElementById('dt-title').textContent = article.title;
+    document.getElementById('dt-summary').textContent = article.summary;
+    document.getElementById('dt-body').textContent = article.content;
+    
+    renderSources(document.getElementById('dt-links'), article.links);
+  }
+
+  function renderSources(linksDiv, links) {
+    linksDiv.innerHTML = '<span>🔗 来源参考：</span>';
+    const sources = (links || []).filter(link => /^https?:\/\//i.test(link.url));
+    linksDiv.style.display = sources.length ? '' : 'none';
+    sources.forEach(link => {
+      const a = document.createElement('a');
+      a.href = link.url;
+      a.className = 'link-tag';
+      a.textContent = link.name;
+      a.target = '_blank';
+      linksDiv.appendChild(a);
+    });
+  }
+
+  /* --- 头条版式切换 --- */
+  btnToggleMode.addEventListener('click', () => {
+    isImageMode = !isImageMode;
+    if (isImageMode) {
+      headlineContent.className = 'headline-content mode-image';
+      btnToggleMode.textContent = '切换：无图沉浸版';
+      btnToggleMode.style.background = 'var(--neo-mint)';
+    } else {
+      headlineContent.className = 'headline-content mode-text';
+      btnToggleMode.textContent = '切换：有图分栏版';
+      btnToggleMode.style.background = 'var(--neo-yellow)';
+    }
+  });
+
+  /* --- 左侧电梯滚动监听 --- */
+  const sections = document.querySelectorAll('section[id]');
+  const navDots = document.querySelectorAll('.nav-dot');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+    });
+    navDots.forEach(dot => {
+      dot.classList.remove('active');
+      if (dot.getAttribute('href') === `#${current}`) dot.classList.add('active');
+    });
+  });
+
+  /* --- 抽签盲盒逻辑 --- */
+  function renderFortune(value) {
+    fRes.replaceChildren();
+    const lines = value.split(/\n|(?=【[宜忌]】|(?<!【)[宜忌][：:])/u);
+    for (const line of lines.map(text => text.trim()).filter(Boolean)) {
+      const row = document.createElement('p');
+      const tag = line.match(/^【?([宜忌])(?:】[：:]?|[：:])\s*/u);
+      if (tag) {
+        appendText(row, 'span', '【' + tag[1] + '】').className =
+          'fortune-label ' + (tag[1] === '宜' ? 'good' : 'caution');
+      }
+      row.append(line.slice(tag ? tag[0].length : 0));
+      fRes.append(row);
+    }
+  }
+
+  function openModal() {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // 防止背景滚动
+    // 重置状态
+    btnDraw.disabled = !fortunesList.length;
+    btnDraw.textContent = fortunesList.length ? '抽取今日签' : '今日暂无签文';
+    fRes.style.display = 'none';
+    btnDraw.style.display = 'inline-flex';
+    btnDecode.style.display = 'none';
+    currentDrawnFortune = null;
+  }
+  
+  let drawTimer;
+  function closeModal() {
+    clearTimeout(drawTimer);
+    modal.classList.remove('is-drawing');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  function initialize() {
+    fillIssue();
+    renderBentoGrid();
+    initTabs();
+    // 模拟首次打开自动弹窗 (通过 sessionStorage 防止刷新反复弹)
+    let drawn = false;
+    try { drawn = !!sessionStorage.getItem('ai-daily:' + issue.date); } catch {}
+    if (!drawn && fortunesList.length) {
+      openModal();
+    }
+  }
+  initialize();
+
+  btnCloseModal.addEventListener('click', closeModal);
+  btnOpenLots.addEventListener('click', openModal);
+
+  btnDraw.addEventListener('click', () => {
+    btnDraw.disabled = true;
+    btnDraw.textContent = '摇签中…';
+    modal.classList.add('is-drawing');
+    drawTimer = setTimeout(() => {
+      currentDrawnFortune = fortunesList[Math.floor(Math.random() * fortunesList.length)];
+      modal.classList.remove('is-drawing');
+      renderFortune(currentDrawnFortune.text);
+      fRes.style.display = 'block';
+      btnDraw.style.display = 'none';
+      btnDecode.style.display = 'inline-flex';
+      try { sessionStorage.setItem('ai-daily:' + issue.date, 'true'); } catch {}
+    }, 900);
+  });
+
+  // 解签：关闭弹窗 -> 滚动到速览 -> 切换到详情视图 -> 激活对应的 Tab
+  btnDecode.addEventListener('click', () => {
+    closeModal();
+    if (currentDrawnFortune) {
+      switchToDetailView(currentDrawnFortune.theme, currentDrawnFortune.index);
+    }
+  });
+
+</script>
+</body>
+</html>

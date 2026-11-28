@@ -776,6 +776,10 @@ html{scroll-padding-top:0}
     }
     const requested = target.split('?')[0];
     const date = hasIssue(index, requested) ? requested : index.latest;
+    if (date === '2026-11-28') {
+      location.replace('../index.html#2026-11-28');
+      return;
+    }
     try {
       const data = await loadIssue(date);
       if (token !== routeToken) return;
